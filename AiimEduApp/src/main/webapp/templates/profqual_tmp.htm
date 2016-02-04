@@ -1,9 +1,10 @@
 <h2>PROFESSIONAL QUALIFICATION</h2>
-
-<div class="form-group">
+<div class="alter_group">
+		
+        <div class="form-group">
 					<div class="row">
 
-						<div class="col-xs-12">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label">Name of Profession / Course</label>
 							<input type="text"
 								ng-model="application.eductionalInfo.pq.obtained"
@@ -18,7 +19,7 @@
 				<div class="form-group">
 					<div class="row">
 
-						<div class="col-xs-12">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label"> Name of institute /
 								university</label> <input type="text"
 								ng-model="application.eductionalInfo.pq.college"
@@ -34,10 +35,10 @@
 					<div class="row">
 
 
-						<div class="col-xs-8">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label">Month and Year of passing </label>
 							<div class="row">
-								<div class="col-xs-2">
+								<div class="yrcol-md-4">
 
 									<select class="monthTxt form-control"
 										ng-model="application.eductionalInfo.pq.from_month"
@@ -58,7 +59,7 @@
 									</select>
 
 								</div>
-								<div class="col-xs-2">
+								<div class="yrcol-md-8">
 
 									<select class="monthYr form-control"
 										ng-model="application.eductionalInfo.pq.from_year"
@@ -67,10 +68,10 @@
 									</select>
 
 								</div>
-								<div class="col-xs-4"></div>
-							</div>
-
-							<div class="col-xs-4"></div>
+								 
+                            </div>
+                            
+                           </div>
 
 						</div>
 					</div>
@@ -78,7 +79,7 @@
 
 					<div class="form-group">
 						<div class="row">
-							<div class="col-md-6 col-sm-12">
+							<div class="col-sm-6 col-xs-12 col-md-4">
 								<label class="control-label"> Percentage of marks / CGPA
 									obtained obtained</label> <input type="text"
 									class="form-control percentage "
@@ -88,7 +89,7 @@
 									enter numbers with allowed characters ".", "%" </span>
 							</div>
 
-							<div class="col-md-6 col-sm-12">
+							<div class="col-sm-6 col-xs-12 col-md-4">
 								<label class="control-label">Grade obtained</label> <input
 									type="text" class="form-control"
 									ng-model="application.eductionalInfo.pq.division"
@@ -97,13 +98,17 @@
 
 						</div>
 					</div>
+
+</div> <!-- Close of alter group -->
 					
 <div ng-form="pq_{{$index}}"
 	ng-repeat="pq in application.eductionalInfo.pqAdd">
 	<h2>ADDITIONAL PROFESSIONAL QUALIFICATION</h2>
-	<div class="form-group">
+	
+<div class="alter_group">  
+    <div class="form-group">
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label">Name of Profession / Course</label>
 							<input type="text"
 								ng-model="pq.obtained"
@@ -114,7 +119,7 @@
 				</div>
 			<div class="form-group">
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label"> Name of institute /
 								university</label> <input type="text"
 								ng-model="pq.college"
@@ -126,10 +131,10 @@
 					<div class="row">
 
 
-						<div class="col-xs-8">
+						<div class="col-xs-12 col-md-4 col-sm-6">
 							<label class="control-label">Month and Year of passing </label>
 							<div class="row">
-								<div class="col-xs-2">
+								<div class="yrcol-md-4">
 
 									<select class="monthTxt form-control"
 										ng-model="pq.from_month"
@@ -150,7 +155,7 @@
 									</select>
 
 								</div>
-								<div class="col-xs-2">
+								<div class="yrcol-md-8">
 
 									<select class="monthYr form-control"
 										ng-model="pq.from_year"
@@ -159,18 +164,16 @@
 									</select>
 
 								</div>
-								<div class="col-xs-4"></div>
-							</div>
-
-							<div class="col-xs-4"></div>
-
+							
 						</div>
 					</div>
 
+		</div>
+	 </div>
 
 					<div class="form-group">
 						<div class="row">
-							<div class="col-md-6 col-sm-12">
+							<div class="col-sm-6 col-xs-12 col-md-4">
 								<label class="control-label"> Percentage of marks / CGPA
 									obtained obtained</label> <input type="text"
 									class="form-control percentage "
@@ -180,7 +183,7 @@
 									enter numbers with allowed characters ".", "%" </span>
 							</div>
 
-							<div class="col-md-6 col-sm-12">
+							<div class="col-sm-6 col-xs-12 col-md-4">
 								<label class="control-label">Grade obtained</label> <input
 									type="text" class="form-control"
 									ng-model="pq.division"
@@ -190,5 +193,6 @@
 						</div>
 					</div>
 	
-	</div>					
+</div> <!-- Close Of grad Index -->
 					
+</div>	<!-- Close Of Alter Group -->		

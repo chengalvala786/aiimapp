@@ -61,7 +61,7 @@ section h2{
 	font-size:20px;
 	font-weight:bold;
 	color:#f19027;
-	padding:10px;
+
 }
 
 .cust_btn{
@@ -112,4 +112,204 @@ footer img{
 	-moz-opacity:.3;
 	-webkit-opacity:.3;
 	
+}
+
+/* CSS written on 2nd February 2016 */
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15,
+.dcol-xs-3,
+.dcol-xs-7,
+.yrcol-md-8,
+.yrcol-md-4
+{
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+
+.dcol-xs-3, .yrcol-md-4{
+		 width: 30%;
+        float: left;
+}
+	
+.dcol-xs-7, .yrcol-md-8{
+		 width: 70%;
+        float: left;
+}
+
+ 
+	
+nav h2 {
+    font-size: 14px !important;
+	font-weight:bold;
+}
+
+.adani_hd p{
+	font-style:italic !important;
+}
+
+
+@media only screen and (max-width : 767px) {
+	   
+   .form-group .row div:nth-of-type(2n) {
+     background: none;
+   } /* to off alter */
+
+   div[class|="col"]:nth-child(odd) { background: #f8f8f8; }
+   
+   div[class|="col"]{
+	   padding:15px;
+   }
+   
+   
+}
+
+@media (min-width: 320px) {
+	.dobwidth{
+	   width:65%;
+   }
+}
+
+@media (min-width: 768px) {
+	.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+	
+	.dcol-xs-3{
+		 width: 30%;
+        float: left;
+	}
+	
+	.dcol-xs-7{
+		 width: 70%;
+        float: left;
+	}
+	
+	.alter_group .form-group:nth-child(odd) {background: #f8f8f8; }
+	
+	.form-group{
+	padding:10px;
+	}
+	
+	.dobwidth{
+	   width:75%;
+   }
+
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+	
+	.dcol-xs-3{
+		 width: 30%;
+        float: left;
+	}
+	
+	.dcol-xs-7{
+		 width: 70%;
+        float: left;
+	}
+	
+	
+
+	
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+	
+	.dcol-xs-3{
+		 width: 30%;
+        float: left;
+		
+	}
+	
+	.dcol-xs-7{
+		 width: 70%;
+        float: left;
+	}
+	
+}
+
+
+
+
+
+
+
+.mleftright{
+	margin-left:20px;
+	margin-right:20px;
+}
+
+div.upload {
+    width: 157px;
+    display: inline-block;
+    height: 35px !important;
+	margin-left:0px;
+	/* background-image: linear-gradient(to bottom, #337AB7 0px, #265A88 100%) !important; */
+	 background-image:none !important;
+	 
+	color: #efefef !important;
+	border:#bbbbbb solid 1px !important;
+	position:relative;
+	 }
+	
+ 
+
+div.upload input {
+    display: block !important;
+
+    width: 157px !important;
+    height: 57px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+.nxtbtn{
+	 
+	color:#ffffff;
+	-webkit-box-shadow:none !important;
+    box-shadow:none !important;
+	border:none !important;
+	border-radius:none !imortant;
+}
+
+.saveExitbtn{
+	
+	color:#ffffff;
+	-webkit-box-shadow:none !important;
+    box-shadow:none !important;
+	border:none !important;
+	border-radius:none !imortant;
+}
+
+.fbtn_active{
+	background-color:#fdb813 !important;
+}
+
+.fbtn_inactive{
+	background-color:#777777 !important;
+}
+
+.mleft20{
+	margin-left:20px;
+}
+
+.fctrl-unblok{
+	display:inline;
 }
