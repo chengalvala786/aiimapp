@@ -7,6 +7,14 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		$( "form" ).addClass( "submitted" );
 
 	});
+	$scope.canSubmit = true; 
+	if ($routeParams.cs === false){
+		$scope.canSubmit = $routeParams.cs;	
+	}
+	
+	
+	
+	
 	$scope.upload = function (file, tranType) {
 		var oMyForm = new FormData();
 
@@ -122,11 +130,11 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 	};
 
 	$scope.getImage = function( ) {
-		return $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/Apply/getImg?email='+$rootScope.application.personalInfo.emailId+"&rowId="+$rootScope.application.app_rw_id;
+		return $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/AiimEduApp/getImg?email='+$rootScope.application.personalInfo.emailId+"&rowId="+$rootScope.application.app_rw_id;
 	};
 
 	$scope.getCard = function( ) {
-		return $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/Apply/getImg?email='+$rootScope.application.personalInfo.emailId+"&rowId="+$rootScope.application.app_rw_id+"&imageType=scoreCard";
+		return $location.protocol() + '://'+ $location.host() +':'+  $location.port() + '/AiimEduApp/getImg?email='+$rootScope.application.personalInfo.emailId+"&rowId="+$rootScope.application.app_rw_id+"&imageType=scoreCard";
 	};
 
 	//Click of save button
@@ -269,6 +277,8 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 						if ($rootScope.application.personalInfo.languages ==null){
 							$rootScope.application.personalInfo.languages.push(newRecord);
 						}
+						
+					if ($rootScope.application.acceptedDate === ""){	
 						if (pageNo==="1"){
 							$location.path("personalInfo");
 						}else if (pageNo==="2"){
@@ -280,7 +290,13 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 						}else{
 							$location.path("personalInfo");
 						}
-
+					}else{
+						if ($rootScope.application.tranId !=null){
+							$location.path("review").search({cs: false});
+						}else{
+							$location.path("resultpage");
+						}
+					}	
 
 
 
