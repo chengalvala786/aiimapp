@@ -551,10 +551,10 @@
 		</table>
 		<div class="flow_buttons no-print">
 			<a href="#additionalInfo" class="btn btn-primary btn-lg active"
-				role="button">Previous</a> <a onClick="window.print();return false"
+				ng-disabled="canSubmit==false"role="button" >Previous</a> <a onClick="window.print();return false"
 				class="btn btn-primary btn-lg active" role="button">Print this
 				page</a> <a ng-click="save('review')"
-				class="btn btn-primary btn-lg active" role="button">Submit</a>
+				class="btn btn-primary btn-lg active"  ng-disabled="canSubmit==false" role="button">Submit</a>
 
 		</div>
 		<div class="logoCenter show-print">
