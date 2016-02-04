@@ -1,0 +1,511 @@
+<h2>GRADUATE QUALIFICATION</h2>
+<div class="form-group">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<label class="radio-inline"> <input type="checkbox"
+				name="pursuing_g" ng-model="gSelected" ng-click="selected('g')" /><b>Pursuing
+					for degree</b>
+			</label>
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<div class="row">
+		<div class="col-xs-12">
+			<label class="control-label required">Degree Obtained</label> <input
+				type="text" class="form-control"
+				ng-model="application.eductionalInfo.gd.obtained" required
+				name="gd_obtained" ng-pattern="/^(\D)+$/" /> <span
+				class="field-error" ng-show="gd_obtained">This is a required
+				field.</span> <span class="field-error" ng-show="isDegreeObtainedErr">No
+				digit allowed</span>
+		</div>
+	</div>
+</div>
+<div class="form-group">
+	<div class="row">
+		<div class="col-xs-12">
+			<label class="control-label required">Subject /
+				Specialization</label> <input type="text" class="form-control"
+				ng-model="application.eductionalInfo.gd.subject" required
+				name="gd_subject" /> <span class="field-error" ng-show="gd_subject">This
+				is a required field.</span> <span class="field-error"
+				ng-show="isSubjectErr">No digit allowed</span>
+
+		</div>
+
+	</div>
+</div>
+<div class="form-group">
+	<div class="row">
+		<div class="col-xs-12">
+			<label class="control-label required"> College / Institute</label> <input
+				type="text" class="form-control"
+				ng-model="application.eductionalInfo.gd.college" required
+				name="gd_college" ng-pattern="/^(\D)+$/" /> <span
+				class="field-error" ng-show="gd_college">This is a required
+				field.</span> <span class="field-error" ng-show="isCollegeErr">No
+				digit allowed</span>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="form-group">
+	<div class="row">
+
+		<div class="col-xs-12">
+			<label class="control-label required"> University</label> <input
+				type="text" class="form-control" name="gd_university" required
+				ng-model="application.eductionalInfo.gd.university"
+				ng-pattern="/^(\D)+$/" /> <span class="field-error"
+				ng-show="gd_university">This is a required field.</span> <span
+				class="field-error" ng-show="isUniversityErr">No digit
+				allowed</span>
+
+
+		</div>
+
+	</div>
+</div>
+
+<div ng-if="gSelected ==false">
+	<div class="form-group">
+		<div class="row">
+
+
+			<div class="col-xs-6">
+				<label class="control-label required">From </label>
+				<div class="row">
+					<div class="col-xs-2">
+						<select class="monthTxt form-control"
+							ng-model="application.eductionalInfo.gd.from_month"
+							class="form-control" name="gd_from_month"
+							 required>
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select> <span class="field-error" ng-show="gd_from_month">This is
+							a required field.</span>
+
+					</div>
+					<div class="col-xs-4">
+
+						<select class="monthYr form-control"
+							ng-model="application.eductionalInfo.gd.from_year"
+							class="form-control" name="gd_from_year"
+							ng-options="year as year for year in years" required>
+
+
+
+						</select> <span class="field-error" ng-show="gd_from_year">This is a
+							required field.</span>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<label class="control-label required">To </label>
+				<div class="row">
+					<div class="col-xs-2">
+
+
+						<select class="monthTxt form-control"
+							ng-model="application.eductionalInfo.gd.to_month"
+							class="form-control" name="gd_to_month" required>
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select> <span class="field-error" ng-show="gd_to_month">This is a
+							required field.</span>
+
+					</div>
+					<div class="col-xs-4">
+						<select class="monthYr form-control"
+							ng-model="application.eductionalInfo.gd.to_year"
+							class="form-control" name="gd_to_year" required
+							ng-options="year as year for year in years">
+
+						</select> <span class="field-error" ng-show="gd_to_year">This is a
+							required field.</span>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="row">
+			<div class="col-md-2 col-sm-6">
+				<label class="control-label required"> Marks obtained </label> <input
+					type="text" class="form-control percentage"
+					ng-model="application.eductionalInfo.gd.marks" name="gd_marks"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" required /> <span
+					class="field-error" ng-show="gd_marks">This is a required
+					field.</span> <span class="field-error" ng-show="isGDMarksErr">Marks
+					should be in numeric.</span>
+
+			</div>
+			<div class="col-md-2 col-sm-6">
+				<label class="control-label required"> Max marks</label> <input
+					type="text" class="form-control percentage"
+					ng-model="application.eductionalInfo.gd.maxmarks"
+					name="gd_maxmarks"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" required /> <span
+					class="field-error" ng-show="gd_maxmarks">This is a required
+					field.</span> <span class="field-error" ng-show="isGDMaxMarksErr">Marks
+					should be in numeric.</span>
+
+			</div>
+			<div class="col-md-2 col-sm-6"></div>
+			<div class="col-md-6 col-sm-12">
+				<label class="control-label required">Grade / division
+					obtained</label> <input type="text" class="form-control"
+					ng-model="application.eductionalInfo.gd.division" required
+					name="gd_division" /> <span class="field-error"
+					ng-show="gd_division">This is a required field.</span>
+
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div ng-if="gSelected ==true">
+	<div class="form-group">
+		<div class="row">
+
+
+			<div class="col-xs-6">
+				<label class="control-label ">From </label>
+				<div class="row">
+					<div class="col-xs-3">
+
+
+
+						<select class="monthTxt form-control"
+							ng-model="application.eductionalInfo.gd.from_month"
+							class="form-control" name="gd_from_month">
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+
+					</div>
+					<div class="col-xs-3">
+
+						<select class="monthYr form-control"
+							ng-model="application.eductionalInfo.gd.from_year"
+							class="form-control" name="gd_from_year"
+							ng-options="year as year for year in years">
+
+
+						</select>
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<label class="control-label ">To </label>
+				<div class="row">
+					<div class="col-xs-3">
+
+
+						<select class="monthTxt form-control"
+							ng-model="application.eductionalInfo.gd.to_month"
+							class="form-control" name="gd_to_month">
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+
+					</div>
+					<div class="col-xs-3">
+						<select class="monthYr form-control"
+							ng-model="application.eductionalInfo.gd.to_year"
+							class="form-control" name="gd_to_year"
+							ng-options="year as year for year in years">
+
+						</select>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="row">
+
+			<div class="col-md-2 col-sm-3">
+				<label class="control-label "> Marks obtained </label> <input
+					type="text" class="form-control percentage"
+					ng-model="application.eductionalInfo.gd.marks" name="gd_marks"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" /> <span
+					class="field-error" ng-show="isGDMarksErr">Marks should be
+					in numeric.</span>
+
+
+			</div>
+
+			<div class="col-md-2 col-sm-3">
+
+				<label class="control-label  "> Max marks</label> <input type="text"
+					class="form-control percentage"
+					ng-model="application.eductionalInfo.gd.maxmarks"
+					name="gd_maxmarks"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" /> <span
+					class="field-error" ng-show="isGDMaxMarksErr">Max Marks
+					should be in numeric.</span>
+
+			</div>
+			<div class="col-md-2 col-sm-3"></div>
+
+
+
+			<div class="col-md-6 col-sm-12">
+				<label class="control-label ">Grade / division obtained</label> <input
+					type="text" class="form-control"
+					ng-model="application.eductionalInfo.gd.division"
+					name="gd_division" />
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-form="grad_{{$index}}"
+	ng-repeat="grad in application.eductionalInfo.gdAdd">
+<h2>ADDITIONAL GRADUATE QUALIFICATION</h2>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12">
+				<label class="control-label ">Degree Obtained</label> <input
+					type="text" class="form-control" ng-model="grad.obtained" 
+					name="gd_obtained_{{$index}}" ng-pattern="/^(\D)+$/" /> <span
+					class="field-error" ng-show="eductionalInfoForm.grad_{{$index}}.gd_obtained_{{$index}}.$error.pattern">No
+					digit allowed</span>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12">
+				<label class="control-label ">Subject /
+					Specialization</label> <input type="text" class="form-control"
+					ng-model="grad.subject"  name="gd_subject_{{$index}}"  ng-pattern="/^(\D)+$/"/> <span class="field-error"
+					ng-show="eductionalInfoForm.grad_{{$index}}.gd_subject_{{$index}}.$error.pattern">No digit allowed</span>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12">
+				<label class="control-label "> College / Institute</label> <input
+					type="text" class="form-control" ng-model="grad.college" 
+					name="gd_college_{{$index}}" ng-pattern="/^(\D)+$/" /> <span class="field-error"
+					ng-show="eductionalInfoForm.grad_{{$index}}.gd_college_{{$index}}.$error.pattern">No digit allowed</span>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="row">
+
+			<div class="col-xs-12">
+				<label class="control-label "> University</label> <input
+					type="text" class="form-control" name="gd_university_{{$index}}"
+					 ng-model="grad.university" ng-pattern="/^(\D)+$/" /> <span class="field-error"
+					ng-show="eductionalInfoForm.grad_{{$index}}.gd_university_{{$index}}.$error.pattern">No digit allowed</span>
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="row">
+
+
+			<div class="col-xs-6">
+				<label class="control-label ">From </label>
+				<div class="row">
+					<div class="col-xs-3">
+
+
+
+						<select class="monthTxt form-control"
+							ng-model="grad.from_month"
+							class="form-control" name="gd_from_month_{{$index}}">
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+
+					</div>
+					<div class="col-xs-3">
+
+						<select class="monthYr form-control"
+							ng-model="grad.from_year"
+							class="form-control" name="gd_from_year_{{$index}}"
+							ng-options="year as year for year in years">
+
+
+						</select>
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6">
+				<label class="control-label ">To </label>
+				<div class="row">
+					<div class="col-xs-3">
+
+
+						<select class="monthTxt form-control"
+							ng-model="grad.to_month"
+							class="form-control" name="gd_to_month_{{$index}}">
+							<option value=""></option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+
+					</div>
+					<div class="col-xs-3">
+						<select class="monthYr form-control"
+							ng-model="grad.to_year"
+							class="form-control" name="gd_to_year_{{$index}}"
+							ng-options="year as year for year in years">
+
+						</select>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+<div class="form-group">
+		<div class="row">
+
+			<div class="col-md-2 col-sm-3">
+				<label class="control-label "> Marks obtained </label> <input
+					type="text" class="form-control percentage"
+					ng-model="grad.marks" name="gd_marks_{{$index}}"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" /> <span
+					class="field-error" ng-show="eductionalInfoForm.grad_{{$index}}.gd_marks_{{$index}}.$error.pattern">Marks should be
+					in numeric.</span>
+
+
+			</div>
+
+			<div class="col-md-2 col-sm-3">
+
+				<label class="control-label  "> Max marks</label> <input type="text"
+					class="form-control percentage"
+					ng-model="grad.maxmarks"
+					name="gd_maxmarks_{{$index}}"
+					ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/" /> <span
+					class="field-error" ng-show="eductionalInfoForm.grad_{{$index}}.gd_maxmarks_{{$index}}.$error.pattern">Max Marks
+					should be in numeric.</span>
+
+			</div>
+			<div class="col-md-2 col-sm-3"></div>
+
+
+
+			<div class="col-md-6 col-sm-12">
+				<label class="control-label ">Grade / division obtained</label> <input
+					type="text" class="form-control"
+					ng-model="grad.division"
+					name="gd_division_{{$index}}" />
+
+
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+

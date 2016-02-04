@@ -1,0 +1,194 @@
+	<div ng-form="cmp_{{$index}}"
+	ng-repeat="cmp in application.workInfo.empDetails track by $index">
+	<span ng-if="$index == 0"><h2>CURRENT EMPLOYMENT DETAILS</h2> </span>
+		
+	<span ng-if="$index >0 "><h2>PREVIOUS EMPLOYMENT DETAILS</h2> </span>	
+		
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">From </label>
+						<div class="row">
+							<div class="col-xs-4">
+									<select class="monthTxt form-control" ng-model="cmp.we_from_month" class="form-control"  name="we_from_month_{{$index}}"  >
+									<option value=""></option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select> 
+							</div>
+							<div class="col-xs-8">
+							
+							<select class="monthYr form-control" ng-model="cmp.we_from_year" class="form-control"  name="gd_from_year_{{$index}}" ng-options="year as year for year in years" >
+							</select>
+							
+							</div>
+                	</div>
+					</div>
+
+					<div class="col-xs-4">
+						<label class="control-label">To </label>
+						<div class="row">
+							<div class="col-xs-4">
+									<select class="monthTxt form-control" ng-model="cmp.we_to_month" class="form-control"  name="we_to_{{$index}}"  >
+									<option value=""></option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select> 
+									
+									
+									
+									
+									
+							</div>
+							  <div class="col-xs-8">
+							  
+							  <select class="monthYr form-control" ng-model="cmp.we_to_year" class="form-control"  name="gd_from_year_{{$index}}" ng-options="year as year for year in years" >
+								
+								</select>
+							  
+							  </div>
+               -
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<label class="control-label">Number of completed Months</label> <input
+							type="text"
+							ng-model="cmp.totalMonths"
+							class="form-control" name="compltd_months_{{$index}}" />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="row">
+
+					<div class="col-xs-12">
+						<label class="control-label">Organization name</label> <input
+							type="text"
+							ng-model="cmp.cmpName"
+							class="form-control" name="org_name_{{$index}}" />
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-6">
+						<label class="control-label">Address Line1</label> <input
+							type="text" ng-pattern="/^(?![0-9]*$)[a-zA-Z0-9 ]*$/"
+							ng-model="cmp.cmpAd1"
+							class="form-control" name="we_address_line1_{{$index}}" />
+							  <span
+							class="field-error" ng-show="workInfoForm.cmp_{{$index}}.we_address_line1_{{$index}}.$error.pattern">Address 1
+							should be in alphanumeric.</span>
+							
+					</div>
+
+					<div class="col-xs-6">
+						<label class="control-label">Address Line2</label> <input
+							type="text"
+							ng-model="cmp.cmpAd2"
+							class="form-control" name="we_address_line2_{{$index}}" />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-4">
+						<label class="control-label">State</label> <input type="text"
+							ng-model="cmp.cmpState" ng-pattern= "/^[a-zA-Z ]*$/"
+							class="form-control" name="we_state_{{$index}}" />
+							<span class="field-error" ng-show="workInfoForm.cmp_{{$index}}.we_state_{{$index}}.$error.pattern">State should not should be in
+							numeric.</span>
+							
+					</div>
+
+					<div class="col-xs-4">
+						<label class="control-label">City</label> <input type="text"
+							ng-model="cmp.cmpCity" ng-pattern="/^[a-zA-Z]*$/"
+							class="form-control" name="we_city_{{$index}}" />
+							<span class="field-error" ng-show="workInfoForm.cmp_{{$index}}.we_city_{{$index}}.$error.pattern">City should be alphabets</span>
+							
+					</div>
+
+					<div class="col-xs-4">
+						<label class="control-label">Pincode</label> <input type="text" ng-pattern="/^\d+$/" 
+							ng-model="cmp.cmpPinCode"
+							class="form-control" name="we_pincode_{{$index}}" />
+							
+						  <span
+							class="field-error" ng-show="workInfoForm.cmp_{{$index}}.we_pincode_{{$index}}.$error.pattern">Pincode
+							should be in numeric.</span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="row">
+
+					<div class="col-xs-12">
+						<label class="control-label">Your Designation</label> <input
+							type="text"     ng-pattern= "/^[a-zA-Z ]*$/"
+							ng-model="cmp.designation"
+							class="form-control" name="we_desig_{{$index}}" />
+							<span class="field-error" ng-show="workInfoForm.cmp_{{$index}}.we_desig_{{$index}}.$error.pattern">Designation should be only alphabets</span>
+									
+							
+					</div>
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+
+					<div class="col-xs-12">
+						<label class="control-label">Your Roles and Responsibilty</label>
+						<textarea class="form-control"
+							ng-model="cmp.roles"
+							name="we_roles"></textarea>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+
+					<div class="col-xs-12">
+						<label class="control-label">Last Salary Drawn (CTC)</label> <input
+							type="text"
+							ng-model="cmp.ctc"
+							class="form-control" name="we_lctc" />
+					</div>
+
+				</div>
+			</div>
+			
+			</div>

@@ -1,0 +1,112 @@
+
+<section class="container-fluid">
+
+
+
+	<div class="container">
+
+		<form name="adminForm" id="adminForm" method="post" ng-app novalidate>
+
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><h2>SEARCH
+						APPLICATIONS</h2></li>
+			</ul>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<label class="control-label ">Start Date :</label> <input
+							type="text" class="form-control"
+							style="width: 50%; display: inline;"
+							uib-datepicker-popup="dd-MM-yyyy" name="startDt"
+							ng-model="startDt" is-open="status1.opened" close-text="Close" />
+						<span style="display: inline;" class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="open1($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
+						<label class="control-label ">End Date :</label> <input
+							type="text" style="width: 50%; display: inline;"
+							class="form-control" name="endDt"
+							uib-datepicker-popup="dd-MM-yyyy" ng-model="endDt"
+							is-open="status2.opened" close-text="Close" /> <span
+							style="display: inline;" class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="open2($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Application Status: </label>
+				<div>
+					<label class="radio-inline"> <input type="radio"
+						 name="status"
+						ng-model="status" value="A"  />
+						Completed
+					</label> <label class="radio-inline"> <input type="radio"
+						 name="status"
+						ng-model="status" value=""  />
+						Pending
+					</label> 
+
+				</div>
+			</div> 	
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<label class="control-label ">Email Id :</label><input type="text"
+							ng-model="emailId" class="form-control"
+							style="width: 50%; display: inline; margin-left: 17px;"
+							name="email_id" />
+
+
+					</div>
+
+
+					<div class="col-md-6 col-sm-12"></div>
+
+				</div>
+
+			</div>
+
+			
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-4 col-sm-12"></div>
+					<div class="col-md-2 col-sm-12">
+						<a class="btn btn-primary btn-lg active" ng-click="searchApp()"
+							role="button">Go </a>
+					</div>
+					<div class="col-md-6 col-sm-12"></div>
+
+
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="gridStyle" ui-grid="gridOptions"></div>
+					</div>
+
+
+
+				</div>
+
+			</div>
+		</form>
+
+
+	</div>
+
+</section>

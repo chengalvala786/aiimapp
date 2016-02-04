@@ -1,0 +1,85 @@
+<nav class="no-print">
+	<div class="container">
+
+		<div class="row">
+
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/personal_details.png" />
+				<h2>Personal</h2>
+				<p>Name, address & contact information</p>
+			</div>
+
+			<div class="col-lg-3 disabled_div" >
+				<img src="images/education_details.png" />
+				<h2>Education</h2>
+				<p>School, college and other relevant education details</p>
+			</div>
+
+			<div class="col-lg-3 ">
+				<img src="images/work_details.png" />
+				<h2>Work Experience</h2>
+				<p>Roles, responsibilies, and other related data</p>
+			</div>
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/additional_details.png" />
+				<h2>Additional Details</h2>
+				<p>Areas of Interest and extra curicular activites</p>
+			</div>
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/review_details.png" />
+				<h2>Review</h2>
+				<p>Reviwe the final application</p>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<section class="container-fluid">
+
+	<div class="container-fluid adani_hd_bck">
+		<div class="container adani_hd">
+			<h1>WORK EXPERIENCE</h1>
+			<p>Step 3 of 5</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<form id="workInfoForm"  name="workInfoForm"  ng-app novalidate method="post">
+			<h2>EMPLOYMENT DETAILS</h2>
+			
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12">
+						<label class="control-label">Total work experience as on
+							December 2015</label> <input type="text" maxlength="3" ng-pattern="/^\d+$/" class="form-control inputExp"
+							ng-model="application.workInfo.total_wexp"
+							name="total_wexp" /> months
+							 <span class="field-error"
+							ng-show="total_wexp">Total work experience should be in
+							numeric.</span>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-include="'templates/companydetails_tmp.htm'"></div>
+		
+			<button type="button" ng-show="application.workInfo.empDetails.length <3" ng-click="addCmp()" class="btn btn-default cust_btn">+ ADD
+				ANOTHER EXPERIENCE</button>
+				
+				
+				
+			<div class="flow_buttons">
+				<a href="#eductionInfo" class="btn btn-primary btn-lg active"
+					role="button"> Previous </a> <a class="btn btn-primary btn-lg active"
+					ng-click="saveAndExit('3')" role="button">Save & Exit</a> <a  ng-click="workInfoNext()" 
+					class="btn btn-primary btn-lg active" role="button">Next</a>
+			</div>
+		</form>
+
+
+	</div>
+
+</section>

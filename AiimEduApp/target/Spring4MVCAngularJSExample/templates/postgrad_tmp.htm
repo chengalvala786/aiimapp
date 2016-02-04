@@ -1,0 +1,351 @@
+
+				<h2>POST GRADUATE QUALIFICATION</h2>
+
+				<div class="form-group">
+
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+
+							<label class="radio-inline"> <input type="checkbox"
+								name="pursuing_g" ng-model="pSelected" ng-click="selected('p')" /><b>Pursuing
+									for degree</b>
+							</label>
+						</div>
+
+
+
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label">Degree Obtained</label> <input
+								type="text" class="form-control"
+								ng-model="application.eductionalInfo.pg.obtained"
+								name="pg_obtained" />
+
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label">Subject / Specialization</label> <input
+								type="text" class="form-control" name="pg_subject"
+								ng-model="application.eductionalInfo.pg.subject" />
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label"> College / Institute</label> <input
+								type="text" ng-model="application.eductionalInfo.pg.college"
+								class="form-control" name="pg_college" />
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label"> University</label> <input
+								type="text" class="form-control"
+								ng-model="application.eductionalInfo.pg.university"
+								name="pg_university" />
+						</div>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+
+
+						<div class="col-xs-6">
+							<label class="control-label">From </label>
+							<div class="row">
+								<div class="col-xs-3">
+
+
+									<select class="monthTxt form-control"
+										ng-model="application.eductionalInfo.pg.from_month"
+										class="form-control" name="pg_from_month">
+										<option value=""></option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+
+
+
+
+								</div>
+								<div class="col-xs-3">
+									<select class="monthYr form-control"
+										ng-model="application.eductionalInfo.pg.from_year"
+										class="form-control" name="pg_from_year" ng-options="year as year for year in years">
+
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-6">
+							<label class="control-label">To </label>
+							<div class="row">
+								<div class="col-xs-2">
+									<select class="monthTxt form-control"
+										ng-model="application.eductionalInfo.pg.to_month"
+										class="form-control" name="pg_to_month">
+										<option value=""></option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+
+								</div>
+								<div class="col-xs-4">
+
+									<select class="monthYr form-control"
+										ng-model="application.eductionalInfo.pg.to_year"
+										class="form-control" name="pg_to_year" ng-options="year as year for year in years">
+
+										
+									</select>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-2 col-sm-6">
+							<label class="control-label"> Marks obtained</label>
+							<input type="text" ng-model="application.eductionalInfo.pg.marks"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/"
+								class="form-control percentage" name="pg_marks" />
+								<span class="field-error"
+									ng-show="isPGMarksErr">Marks should be in numeric.</span>
+								
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<label class="control-label">Max marks</label>
+							<input type="text" ng-model="application.eductionalInfo.pg.maxmarks"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/"
+								class="form-control percentage" name="pg_marks" />
+								<span class="field-error"
+									ng-show="isPGMaxMarksErr">Marks should be in numeric.</span>
+								
+						</div>
+						<div class="col-md-2 col-sm-6"></div>
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label">Grade / division obtained</label> <input
+								type="text" ng-model="application.eductionalInfo.pg.division"
+								class="form-control" name="pg_division" />
+						</div>
+
+					</div>
+				</div>
+					<div ng-form="pg_{{$index}}"
+						ng-repeat="pg in application.eductionalInfo.pgAdd">
+						
+						
+				<h2>ADDITIONAL POST GRADUATE QUALIFICATION</h2>
+
+			
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label">Degree Obtained</label> <input
+								type="text" class="form-control"
+								ng-model="pg.obtained"
+								name="pg_obtained_{{$index}}" />
+
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label">Subject / Specialization</label> <input
+								type="text" class="form-control" name="pg_subject_{{$index}}"
+								ng-model="pg.subject" />
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label"> College / Institute</label> <input
+								type="text" ng-model="pg.college"
+								class="form-control" name="pg_college_{{$index}}" />
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label"> University</label> <input
+								type="text" class="form-control"
+								ng-model="pg.university"
+								name="pg_university_{{$index}}" />
+						</div>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+
+
+						<div class="col-xs-6">
+							<label class="control-label">From </label>
+							<div class="row">
+								<div class="col-xs-3">
+
+
+									<select class="monthTxt form-control"
+										ng-model="pg.from_month"
+										class="form-control" name="pg_from_month_{{$index}}">
+										<option value=""></option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+
+
+
+
+								</div>
+								<div class="col-xs-3">
+									<select class="monthYr form-control"
+										ng-model="pg.from_year"
+										class="form-control" name="pg_from_year_{{$index}}" ng-options="year as year for year in years">
+
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-6">
+							<label class="control-label">To </label>
+							<div class="row">
+								<div class="col-xs-2">
+									<select class="monthTxt form-control"
+										ng-model="pg.to_month"
+										class="form-control" name="pg_to_month_{{$index}}">
+										<option value=""></option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+
+								</div>
+								<div class="col-xs-4">
+
+									<select class="monthYr form-control"
+										ng-model="pg.to_year"
+										class="form-control" name="pg_to_year_{{$index}}" ng-options="year as year for year in years">
+
+										
+									</select>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-2 col-sm-6">
+							<label class="control-label"> Marks obtained</label>
+							<input type="text" ng-model="pg.marks"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/"
+								class="form-control percentage" name="pg_marks_{{$index}}" />
+								<span class="field-error"
+									ng-show="eductionalInfoForm.pg_{{$index}}.pg_marks_{{$index}}.$error.pattern">Marks should be in numeric.</span>
+								
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<label class="control-label">Max marks</label>
+							<input type="text" ng-model="pg.maxmarks"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\/[0-9]+)?(\%)?$/"
+								class="form-control percentage" name="pg_maxmarks_{{$index}}" />
+								<span class="field-error"
+									ng-show="eductionalInfoForm.pg_{{$index}}.pg_maxmarks_{{$index}}.$error.pattern">Marks should be in numeric.</span>
+								
+						</div>
+						<div class="col-md-2 col-sm-6"></div>
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label">Grade / division obtained</label> <input
+								type="text" ng-model="pg.division"
+								class="form-control" name="pg_division_{{$index}}" />
+						</div>
+
+					</div>
+				</div>
+						
+						
+						
+					</div>
+					
+				
+				

@@ -1,0 +1,567 @@
+
+<nav class="no-print">
+	<div class="container">
+
+		<div class="row">
+
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/personal_details.png" />
+				<h2>Personal</h2>
+				<p>Name, address & contact information</p>
+			</div>
+
+			<div class="col-lg-3" >
+				<img src="images/education_details.png" />
+				<h2>Education</h2>
+				<p>School, college and other relevant education details</p>
+			</div>
+
+			<div class="col-lg-3  disabled_div">
+				<img src="images/work_details.png" />
+				<h2>Work Experience</h2>
+				<p>Roles, responsibilies, and other related data</p>
+			</div>
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/additional_details.png" />
+				<h2>Additional Details</h2>
+				<p>Areas of Interest and extra curicular activites</p>
+			</div>
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/review_details.png" />
+				<h2>Review</h2>
+				<p>Reviwe the final application</p>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<section class="container-fluid">
+
+	<div class="container-fluid adani_hd_bck">
+		<div class="container adani_hd">
+			<h1>EDUCATION DETAILS</h1>
+			<p>Step 2 of 5</p>
+		</div>
+	</div>
+
+
+	<div class="container">
+
+		<form name="eductionalInfoForm" id="eductionalInfoForm" ng-app
+			novalidate method="post">
+
+
+			<h2>10TH STD EXAMINATION</h2>
+
+			<div class="form-group">
+				<div class="row">
+					<div ng-show="isFormError" class=" col-xs-12 alert alert-danger">
+						<strong>!Please fill the required fields </strong>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+
+					<div class="col-xs-12">
+						<label class="control-label required">Name of the School
+							Board</label> <input type="text" ng-pattern="/^(\D)+$/"
+							ng-model="application.eductionalInfo.school.schoolName" required
+							class="form-control" name="school_board_name" /> <span
+							class="field-error" ng-show="school_board_name">This is a
+							required field.</span> <span class="field-error"
+							ng-init="school_board_digits = false"
+							ng-show="school_board_digits">No digit allowed</span>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+
+
+					<div class="col-xs-8">
+						<label class="control-label required">Month and Year of
+							passing </label>
+						<div class="row">
+							<div class="col-xs-5">
+
+
+
+								<select class="monthTxt form-control"
+									ng-model="application.eductionalInfo.school.passingMonth"
+									class="form-control" name="school_to_month" required>
+									<option value=""></option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select> <select class="monthYr form-control"
+									ng-model="application.eductionalInfo.school.passingYear"
+									class="form-control" name="school_to_year" required>
+
+									<option value=""></option>
+									<option value="1960">1960</option>
+									<option value="1961">1961</option>
+									<option value="1962">1962</option>
+									<option value="1963">1963</option>
+									<option value="1964">1964</option>
+									<option value="1965">1965</option>
+									<option value="1966">1966</option>
+									<option value="1967">1967</option>
+									<option value="1968">1968</option>
+									<option value="1969">1969</option>
+									<option value="1970">1970</option>
+									<option value="1971">1971</option>
+									<option value="1972">1972</option>
+									<option value="1973">1973</option>
+									<option value="1974">1974</option>
+									<option value="1975">1975</option>
+									<option value="1976">1976</option>
+									<option value="1977">1977</option>
+									<option value="1978">1978</option>
+									<option value="1979">1979</option>
+									<option value="1980">1980</option>
+									<option value="1981">1981</option>
+									<option value="1982">1982</option>
+									<option value="1983">1983</option>
+									<option value="1984">1984</option>
+									<option value="1985">1985</option>
+									<option value="1986">1986</option>
+									<option value="1987">1987</option>
+									<option value="1988">1988</option>
+									<option value="1989">1989</option>
+									<option value="1990">1990</option>
+									<option value="1991">1991</option>
+									<option value="1992">1992</option>
+									<option value="1993">1993</option>
+									<option value="1994">1994</option>
+									<option value="1995">1995</option>
+									<option value="1996">1996</option>
+									<option value="1997">1997</option>
+									<option value="1998">1998</option>
+									<option value="1999">1999</option>
+									<option value="2000">2000</option>
+									<option value="2001">2001</option>
+									<option value="2002">2002</option>
+									<option value="2003">2003</option>
+									<option value="2004">2004</option>
+									<option value="2005">2005</option>
+									<option value="2006">2006</option>
+									<option value="2007">2007</option>
+									<option value="2008">2008</option>
+									<option value="2009">2009</option>
+									<option value="2010">2010</option>
+									<option value="2011">2011</option>
+									<option value="2012">2012</option>
+									<option value="2013">2013</option>
+									<option value="2014">2014</option>
+									<option value="2015">2015</option>
+								</select> <span class="field-error" ng-init="sch_dt_req=false"
+									ng-show="sch_dt_req">This is a required field.</span>
+
+
+
+							</div>
+							<div class="col-xs-3">
+
+
+								<!--  <input type="year" class="form-control"  ng-model="application.eductionalInfo.school.passingYear"  name="passing_year" /></div>
+                   -->
+							</div>
+						</div>
+
+						<div class="col-xs-4"></div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label required">Percentage of marks
+								/ CGPA obtained</label> <input type="text"
+								class="form-control percentage" maxlength="5"
+								ng-model="application.eductionalInfo.school.percentage"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\%)?$/" required
+								name="std_percentage" /> <span class="field-error"
+								ng-show="std_percentage">This is a required field.</span> <span
+								class="field-error" ng-show="std_percentPtrnErr">Please
+								enter numbers with allowed characters ".", "%" </span>
+
+
+						</div>
+
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label required">Class / division
+								awarded by board</label> <input type="text" class="form-control"
+								required name="std_division"
+								ng-model="application.eductionalInfo.school.stdDivision" /> <span
+								class="field-error" ng-show="std_division">This is a
+								required field.</span>
+
+						</div>
+
+					</div>
+				</div>
+
+
+				<h2>12TH STD EXAMINATION</h2>
+
+
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label required">Name of the School
+								Board</label> <input type="text" class="form-control"
+								ng-pattern="/^(\D)+$/"
+								ng-model="application.eductionalInfo.highschool.schoolName"
+								required name="school12_board_name" /> <span
+								class="field-error" ng-show="school12_board_name">This is
+								a required field.</span> <span class="field-error"
+								ng-init="school12_board_name_digits = false"
+								ng-show="school12_board_name_digits">No digit allowed</span>
+
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+
+						<div class="col-xs-12">
+							<label class="control-label required">Stream</label> <input
+								type="text" class="form-control" ng-pattern="/^[a-zA-Z]*$/"
+								ng-model="application.eductionalInfo.highschool.streamName"
+								required name="stream12_name" /> <span class="field-error"
+								ng-show="stream12_name">This is a required field.</span> <span
+								class="field-error" ng-init="stream12_nametextE=false"
+								ng-show="stream12_nametextE">Stream should be only
+								Alphabets without spaces</span>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-xs-8">
+							<label class="control-label required">Month and Year of
+								passing</label>
+							<div class="row">
+								<div class="col-xs-5">
+									<select class="monthTxt form-control"
+										ng-model="application.eductionalInfo.highschool.passingMonth"
+										class="form-control" name="highschool_to_month" required>
+										<option value=""></option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+										<option value="05">05</option>
+										<option value="06">06</option>
+										<option value="07">07</option>
+										<option value="08">08</option>
+										<option value="09">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select> <select class="monthYr form-control"
+										ng-model="application.eductionalInfo.highschool.passingYear"
+										class="form-control" name="highschool_to_year" required>
+
+										<option value=""></option>
+										<option value="1960">1960</option>
+										<option value="1961">1961</option>
+										<option value="1962">1962</option>
+										<option value="1963">1963</option>
+										<option value="1964">1964</option>
+										<option value="1965">1965</option>
+										<option value="1966">1966</option>
+										<option value="1967">1967</option>
+										<option value="1968">1968</option>
+										<option value="1969">1969</option>
+										<option value="1970">1970</option>
+										<option value="1971">1971</option>
+										<option value="1972">1972</option>
+										<option value="1973">1973</option>
+										<option value="1974">1974</option>
+										<option value="1975">1975</option>
+										<option value="1976">1976</option>
+										<option value="1977">1977</option>
+										<option value="1978">1978</option>
+										<option value="1979">1979</option>
+										<option value="1980">1980</option>
+										<option value="1981">1981</option>
+										<option value="1982">1982</option>
+										<option value="1983">1983</option>
+										<option value="1984">1984</option>
+										<option value="1985">1985</option>
+										<option value="1986">1986</option>
+										<option value="1987">1987</option>
+										<option value="1988">1988</option>
+										<option value="1989">1989</option>
+										<option value="1990">1990</option>
+										<option value="1991">1991</option>
+										<option value="1992">1992</option>
+										<option value="1993">1993</option>
+										<option value="1994">1994</option>
+										<option value="1995">1995</option>
+										<option value="1996">1996</option>
+										<option value="1997">1997</option>
+										<option value="1998">1998</option>
+										<option value="1999">1999</option>
+										<option value="2000">2000</option>
+										<option value="2001">2001</option>
+										<option value="2002">2002</option>
+										<option value="2003">2003</option>
+										<option value="2004">2004</option>
+										<option value="2005">2005</option>
+										<option value="2006">2006</option>
+										<option value="2007">2007</option>
+										<option value="2008">2008</option>
+										<option value="2009">2009</option>
+										<option value="2010">2010</option>
+										<option value="2011">2011</option>
+										<option value="2012">2012</option>
+										<option value="2013">2013</option>
+										<option value="2014">2014</option>
+										<option value="2015">2015</option>
+									</select> <span class="field-error" ng-init="hsch_dt_req=false"
+										ng-show="hsch_dt_req">This is a required field.</span>
+
+
+								</div>
+								<div class="col-xs-3">
+									<!-- <input type="text" class="form-control" name="passing12_year" /> -->
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-4"></div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label required">Percentage of marks
+								/ CGPA obtained</label> <input type="text"
+								class="form-control percentage" maxlength="5"
+								ng-model="application.eductionalInfo.highschool.std12_percentage"
+								required name="std12_percentage"
+								ng-pattern="/^[0-9]+(\.[0-9]+)?(\%)?$/" /> <span
+								class="field-error" ng-show="std12_percentage">This is a
+								required field.</span> <span class="field-error"
+								ng-show="std12_percentPtrnErr">Please enter numbers with
+								allowed characters ".", "%" </span>
+
+
+						</div>
+
+						<div class="col-md-6 col-sm-12">
+							<label class="control-label required">Class / division
+								awarded by board</label> <input type="text" class="form-control"
+								ng-model="application.eductionalInfo.highschool.std12_division"
+								required name="std12_division" /> <span class="field-error"
+								ng-show="std12_division">This is a required field.</span>
+
+						</div>
+
+
+					</div>
+				</div>
+					<div ng-include="'templates/graduate_tmp.htm'"></div>
+			
+			</div>
+
+				<button type="button" ng-show="application.eductionalInfo.gdAdd.length <3" ng-click="addgrad()" class="btn btn-default cust_btn">+
+					ADD ANOTHER QUALIFICATION</button>
+					
+					<div ng-include="'templates/postgrad_tmp.htm'"></div>
+
+				<button type="button" ng-show="application.eductionalInfo.pgAdd.length <3" ng-click="addpg()"  class="btn btn-default cust_btn">+
+					ADD ANOTHER QUALIFICATION</button>
+
+				<div ng-include="'templates/profqual_tmp.htm'"></div>
+
+					<button type="button" ng-show="application.eductionalInfo.pqAdd.length <2" ng-click="addpq()"  class="btn btn-default cust_btn">+
+						ADD ANOTHER QUALIFICATION</button>
+				
+				
+
+					<h2>ADMISSION TEST</h2>
+
+					<div class="form-group">
+
+						<div>
+
+							<input type="radio" name="adm_test"
+								ng-model="application.eductionalInfo.admissionTest.status"
+								value="1" /> Already appeared <input type="radio"
+								name="adm_test"
+								ng-model="application.eductionalInfo.admissionTest.status"
+								value="0" />Yet to appear
+
+
+						</div>
+					</div>
+					<div
+						ng-if="application.eductionalInfo.admissionTest.status == '1'">
+						<div class="form-group">
+							<div class="row">
+
+								<div class="col-xs-12">
+									<label class="control-label required">Name of Admission Test</label> <select
+										class="form-control" id="sel1" required
+										ng-model="application.eductionalInfo.admissionTest.adm_test_name"
+										name="adm_test_name" required>
+										<option value="CAT">CAT</option>
+										<option value="XAT">XAT</option>
+										<option value="MAT">MAT</option>
+										<option value="GMAT">GMAT</option>
+										<option value="CMAT">CMAT</option>
+										<option value="ATMA">ATMA</option>
+									</select>
+											<span class="field-error"
+									ng-show="adm_test_name">This is a required field.</span>
+								</div>
+
+							</div>
+							<div class="row">
+
+								<div class="col-xs-6">
+									<label class="control-label required">Date of Exam</label> <input
+										type="text" style="display: inline; width: 90%" name="doe" required
+										class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-init="dt"
+										ng-model="application.eductionalInfo.admissionTest.doe"
+										is-open="status.opened" datepicker-options="dateOptions"
+										 close-text="Close" /> <span
+										style="display: inline;" class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="open($event)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+										<span class="field-error"
+									ng-show="doe">This is a required field.</span>
+								</div>
+							
+									
+								<div class="col-xs-6">
+									
+								</div>
+								
+							</div>
+
+
+						</div>
+
+						<h3>Score Card Details</h3>
+
+						<div class="form-group">
+							<div class="row">
+
+								<div class="col-xs-12">
+									<label class="control-label "> Registration Number</label> <input
+										type="text" class="form-control" 
+										ng-model="application.eductionalInfo.admissionTest.regnumber"
+										name="pq_regnumber" />
+							
+								</div>
+
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<div class="row">
+
+
+								<div class="col-xs-12">
+
+									<div class="row">
+										<div class="col-xs-6">
+											<label class="control-label">Score </label><input type="text"
+												class="form-control"
+												ng-model="application.eductionalInfo.admissionTest.adm_score"
+												name="adm_score" />
+												<span class="field-error" ng-show="adm_marksScorePtrnErr">Please
+												enter numbers with allowed characters "."</span>
+										</div>
+										<div class="col-xs-6">
+											<label class="control-label">Percentile</label> <input
+												type="text" class="form-control" name="adm_percentage"
+												ng-pattern="/^[0-9]+(\.[0-9]+)?(\%)?$/"
+												ng-model="application.eductionalInfo.admissionTest.adm_percentage" />
+											<span class="field-error" ng-show="adm_marksPercentPtrnErr">Please
+												enter numbers with allowed characters ".", "%" </span>
+
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+
+
+						<h3>Upload Score Card</h3>
+
+
+						<div class="form-group">
+							<div class="row">
+
+								<div class="col-xs-12">
+									<span class="file-input btn btn-primary btn-file">
+										UPLOAD SCORE CARD <input
+										ng-model="application.eductionalInfo.admissionTest.scoreCard"
+										type="file" multiple>
+									</span> <span id="file_name">No files selected</span>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div ng-show="isFormError" class=" col-xs-12 alert alert-danger">
+								<strong>!Please fill the required fields </strong>
+							</div>
+						</div>
+					</div>
+					<div class="flow_buttons">
+						<a href="#personalInfo" class="btn btn-primary btn-lg active"
+							role="button">Previous </a> <a class="btn btn-primary btn-lg active"
+					ng-click="saveAndExit('2')" role="button">Save & Exit</a> <a ng-click="eductionalInfoNext()"
+							class="btn btn-primary btn-lg active" role="button">Next</a>
+					</div>
+		</form>
+
+
+	</div>
+
+</section>

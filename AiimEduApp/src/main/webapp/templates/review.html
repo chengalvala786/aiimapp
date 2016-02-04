@@ -1,0 +1,567 @@
+<nav class="no-print">
+	<div class="container">
+
+		<div class="row">
+
+
+			<div class="col-lg-2 disabled_div">
+				<img src="images/personal_details.png" />
+				<h2>Personal</h2>
+				<p>Name, address & contact information</p>
+			</div>
+
+			<div class="col-lg-3 disabled_div" >
+				<img src="images/education_details.png" />
+				<h2>Education</h2>
+				<p>School, college and other relevant education details</p>
+			</div>
+
+			<div class="col-lg-3 disabled_div">
+				<img src="images/work_details.png" />
+				<h2>Work Experience</h2>
+				<p>Roles, responsibilies, and other related data</p>
+			</div>
+
+			<div class="col-lg-2 disabled_div ">
+				<img src="images/additional_details.png" />
+				<h2>Additional Details</h2>
+				<p>Areas of Interest and extra curicular activites</p>
+			</div>
+
+			<div class="col-lg-2 ">
+				<img src="images/review_details.png" />
+				<h2>Review</h2>
+				<p>Reviwe the final application</p>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<section class="container-fluid">
+
+	<div class="container-fluid adani_hd_bck no-print">
+		<div class="container adani_hd">
+			<h1>REVIEW</h1>
+			<p>Step 5 of 5</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<p></p>
+
+		<div class="logoLeft show-print">
+
+			<img src="images/logo.jpg" />
+
+		</div>
+
+		<div class="photoDiv">
+
+				<img ng-src="{{getImage()}}">
+				<!-- <label class="photoDivTxt"> Please paste your recent colour
+					passport size photograph here</label> -->
+		</div>
+
+
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="3">Personal Details</th>
+
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{application.personalInfo.fName}}</td>
+					<td>{{application.personalInfo.mName}}</td>
+					<td>{{application.personalInfo.lName}}</td>
+
+				</tr>
+				<tr>
+					<td colspan="3">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td width="64%">
+
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td width="23%">Email Id</td>
+													<td width="77%">{{application.personalInfo.emailId}}</td>
+												</tr>
+												<tr>
+													<td>Category</td>
+													<td>{{application.personalInfo.category}}</td>
+												</tr>
+												<tr>
+													<td height="134">Mailling Address</td>
+													<td>{{application.personalInfo.ad1}}&nbsp;{{application.personalInfo.ad2}}<br>
+													<strong>City :</strong> {{application.personalInfo.city}}
+														&nbsp;<br>
+													<strong>State :</strong>
+														{{application.personalInfo.state}}&nbsp;<br>
+													<strong>Country :</strong>
+														{{application.personalInfo.country}}&nbsp;<br>
+													<strong>Pin Code : </strong>{{application.personalInfo.pincode}}
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									<td width="36%">
+
+										<table class="table table-bordered">
+
+											<tbody>
+												<tr>
+													<td>Date of Birth</td>
+													<td><p
+															ng-bind="application.personalInfo.dob | date:'dd-MM-yyyy'"></p></td>
+												</tr>
+
+												<tr>
+													<td>Nationality</td>
+													<td>{{application.personalInfo.nationality}}</td>
+												</tr>
+												<tr>
+													<td>Marital Status</td>
+													<td><span
+														ng-show="application.personalInfo.maritalstatus == '1'">Single
+													</span><span
+														ng-show="application.personalInfo.maritalstatus == '2'">Married
+													</span></td>
+												</tr>
+												<tr>
+													<td>Gender</td>
+													<td><span
+														ng-show="application.personalInfo.gender == 'M'">Male
+													</span><span ng-show="application.personalInfo.gender == 'F'">Female
+													</span></td>
+												</tr>
+
+												<tr>
+													<td>Phone Number(H)</td>
+													<td>{{application.personalInfo.stdCode}}-{{application.personalInfo.number}}
+													</td>
+												</tr>
+												<tr>
+													<td>Phone Number(M)</td>
+													<td>{{application.personalInfo.mobileNumber}}</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+
+					</td>
+
+
+				</tr>
+				<tr>
+					<td width="200px">Languages Known</td>
+					<td colspan="2"><span
+						ng-repeat="item  in application.personalInfo.languages"> <label
+							ng-if="$index == 0" class="">{{item.value}},</label> <label
+							ng-if="$index > 0" class="">{{item.value}},</label>
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="6">Educational Qualification</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Standard</td>
+					<td>Name of School / University</td>
+					<td>Month and year of passing</td>
+					<td>Percentage / marks obtained</td>
+					<td>Class / Division obtained</td>
+					<td>Stream</td>
+				</tr>
+				<tr>
+					<td>10TH</td>
+					<td>{{application.eductionalInfo.school.schoolName}}</td>
+					<td>{{application.eductionalInfo.school.passingMonth}}-{{application.eductionalInfo.school.passingYear}}</td>
+					<td>{{application.eductionalInfo.school.percentage}}</td>
+					<td>{{application.eductionalInfo.school.stdDivision}}</td>
+
+					<td></td>
+				</tr>
+
+				<tr>
+					<td>12TH</td>
+					<td>{{application.eductionalInfo.highschool.schoolName}}</td>
+					<td>{{application.eductionalInfo.highschool.passingMonth}}-{{application.eductionalInfo.highschool.passingYear}}
+					</td>
+					<td>
+						{{application.eductionalInfo.highschool.std12_percentage}}</td>
+					<td>{{application.eductionalInfo.highschool.std12_division}}</td>
+
+					<td>{{application.eductionalInfo.highschool.streamName}}</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<br> <br> <br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="9">Bachelor&#39;s Degree Details</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Degree</td>
+					<td>Subject</td>
+					<td>College/Institute</td>
+					<td>University</td>
+					<td>From</td>
+					<td>To</td>
+					<td>Marks / GPA Obtained</td>
+					<td>Max Marks / GPA</td>
+					<td>Grade / Class / Division</td>
+				</tr>
+				<tr>
+				<tr>
+					<td>{{application.eductionalInfo.gd.obtained}}</td>
+					<td>{{application.eductionalInfo.gd.subject}}</td>
+					<td>{{application.eductionalInfo.gd.college}}</td>
+					<td>{{application.eductionalInfo.gd.university}}</td>
+					<td>
+						{{application.eductionalInfo.gd.from_month}}-{{application.eductionalInfo.gd.from_year}}
+					</td>
+					<td>{{application.eductionalInfo.gd.to_month}}-{{application.eductionalInfo.gd.to_year}}
+					</td>
+					<td>{{application.eductionalInfo.gd.marks}}</td>
+					<td>{{application.eductionalInfo.gd.maxmarks}}</td>
+
+					<td>{{application.eductionalInfo.gd.division}}</td>
+
+				</tr>
+				
+				
+					<tr ng-repeat="gd in application.eductionalInfo.gdAdd">
+						<td>{{gd.obtained}}</td>
+						<td>{{gd.subject}}</td>
+						<td>{{gd.college}}</td>
+						<td>{{gd.university}}</td>
+						<td>{{gd.from_month}}-{{gd.from_year}}</td>
+						<td>{{gd.to_month}}-{{gd.to_year}}</td>
+						<td>{{gd.marks}}</td>
+						<td>{{gd.maxmarks}}</td>
+						<td>{{gd.division}}</td>
+
+					</tr>
+				
+						
+					
+					
+						
+				
+				
+				
+				</tr>
+
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="8">Master&#39;s Degree Details</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Degree</td>
+					<td>Subject</td>
+					<td>College/Institute</td>
+					<td>University</td>
+					<td>From</td>
+					<td>To</td>
+					<td>Marks / GPA Obtained</td>
+					<td>Max Marks / GPA</td>
+					<td>Grade / Class / Division</td>
+
+				</tr>
+				<tr>
+					<td>{{application.eductionalInfo.pg.obtained}}</td>
+					<td>{{application.eductionalInfo.pg.subject}}</td>
+					<td>{{application.eductionalInfo.pg.college}}</td>
+					<td>{{application.eductionalInfo.pg.university}}</td>
+					<td>
+						{{application.eductionalInfo.pg.from_month}}-{{application.eductionalInfo.pg.from_year}}</td>
+					<td>{{application.eductionalInfo.pg.to_month}}-{{application.eductionalInfo.pg.to_year}}
+					</td>
+					<td>{{application.eductionalInfo.pg.marks}}</td>
+					<td>{{application.eductionalInfo.pg.maxmarks}}</td>
+					<td>{{application.eductionalInfo.pg.division}}</td>
+
+				</tr>
+					
+					<tr ng-repeat="pg in application.eductionalInfo.pgAdd">
+					<td>{{pg.obtained}}</td>
+					<td>{{pg.subject}}</td>
+					<td>{{pg.college}}</td>
+					<td>{{pg.university}}</td>
+					<td>
+						{{pg.from_month}}-{{pg.from_year}}</td>
+					<td>{{pg.to_month}}-{{pg.to_year}}
+					</td>
+					<td>{{pg.marks}}</td>
+					<td>{{pg.maxmarks}}</td>
+					<td>{{pg.division}}</td>
+
+					</tr>
+				
+				
+
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="7">Professional Qualification or any other Degree
+						Details</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name of Degree / Course</td>
+
+					<td>Name of College / Institute</td>
+
+					<td>Month & Year of Passing</td>
+					<td>Marks / CGPA Obtained</td>
+					<td>Grade / Class / Division</td>
+
+				</tr>
+				<tr>
+					<td>{{application.eductionalInfo.pq.obtained}}</td>
+					<td>{{application.eductionalInfo.pq.college}}</td>
+					<td>{{application.eductionalInfo.pq.from_month}}-{{application.eductionalInfo.pq.from_year}}
+					</td>
+					<td>{{application.eductionalInfo.pq.marks}}</td>
+					<td>{{application.eductionalInfo.pq.division}}</td>
+				</tr>
+				
+					
+					<tr  ng-repeat="pq in application.eductionalInfo.pqAdd">
+					<td>{{pq.obtained}}</td>
+					<td>{{pq.college}}</td>
+					<td>{{pq.from_month}}-{{pq.from_year}}
+					</td>
+					<td>{{pq.marks}}</td>
+					<td>{{pq.division}}</td>
+
+					</tr>
+				
+				
+
+			</tbody>
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="6">Details of Admission Test</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Test</td>
+					<td>Date of Exam</td>
+					<td>Registration Number</td>
+					<td>Overall Score</td>
+					<td>Overall percentile</td>
+					<td>View Score Card</td>
+				</tr>
+				<tr>
+					<td>{{application.eductionalInfo.admissionTest.adm_test_name}}</td>
+					<td><p
+							ng-bind="application.eductionalInfo.admissionTest.doe | date:'dd-MM-yyyy'"></p></td>
+					<td>{{application.eductionalInfo.admissionTest.regnumber}}</td>
+					<td>{{application.eductionalInfo.admissionTest.adm_score}}</td>
+					<td>{{application.eductionalInfo.admissionTest.adm_percentage}}</td>
+					<td><a  ng-href="{{getCard()}}"  target="_blank">View Score Card</a></td>
+					
+					
+					
+
+				</tr>
+
+			</tbody>
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="6">Work Experience Details</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>From</td>
+					<td>To</td>
+					<td>Number of Months</td>
+					<td>Name and Address of the Employer</td>
+					<td>Your Designation</td>
+					<td>Last Salary Drawn</td>
+
+				</tr>
+			
+
+					
+					<tr ng-repeat="empDetails in application.workInfo.empDetails">
+					<td>
+						{{empDetails.we_from_month}}-{{empDetails.we_from_year}}</td>
+					<td>
+						{{empDetails.we_to_month}}-{{empDetails.we_to_year}}</td>
+					<td>{{empDetails.totalMonths}}</td>
+
+					<td>{{empDetails.cmpName}} &nbsp;
+						{{empDetails.cmpAd1}} &nbsp;
+						{{empDetails.cmpAd1}}
+						{{empDetails.cmpCity}} &nbsp;
+						{{empDetails.cmpState}}</td>
+					<td>{{empDetails.designation}}</td>
+					<td>{{empDetails.ctc}}</td>
+
+					</tr>
+				
+
+
+			</tbody>
+		</table>
+
+
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="6">Preference for Personal Interview Location</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>First Preference *</td>
+					<td>{{application.additionalInfo.pref1}}</td>
+				</tr>
+				<tr>
+					<td>Second Preference *</td>
+					<td>{{application.additionalInfo.pref2}}</td>
+				</tr>
+				<tr>
+			</tbody>
+		</table>
+		<div>
+			<label><strong>If under any circumstances, any of
+					the preferred centers are dropped, the applicant will be
+					accommodated in the nearest venue/AIIM campus for interview.</strong> </label>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="6">Extra Curricular Activities & Interest</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<td>Type of Activity</td>
+					<td>{{application.additionalInfo.activity.type}}</td>
+				</tr>
+				<tr>
+					<td>Duration</td>
+					<td>{{application.additionalInfo.activity.duration}}</td>
+				</tr>
+				<tr>
+					<td>Nature of Involvement / Achievement</td>
+					<td>{{application.additionalInfo.activity.nature}}</td>
+				</tr>
+				<tr>
+					<td>Additional Information</td>
+					<td>{{application.additionalInfo.description}}</td>
+				</tr>
+
+
+
+			</tbody>
+		</table>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th colspan="2">How did you come to know about programme</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<td>Source of Information</td>
+					<td><span
+						ng-repeat="item  in application.additionalInfo.srcTags">
+						 <label
+							 class="">{{item}},</label>
+					</span></td>
+				</tr>
+
+
+
+
+			</tbody>
+		</table>
+
+		<table class="table show-print">
+			<thead>
+				<tr>
+					<th colspan="6" style="min-width: 200px"></th>
+					<th colspan="6">Date:
+						<p style="display: inline" ng-bind="dt | date:'dd-MM-yyyy'"></p>
+					</th>
+				</tr>
+			</thead>
+
+		</table>
+		<div class="flow_buttons no-print">
+			<a href="#additionalInfo" class="btn btn-primary btn-lg active"
+				role="button">Previous</a> <a onClick="window.print();return false"
+				class="btn btn-primary btn-lg active" role="button">Print this
+				page</a> <a ng-click="save('review')"
+				class="btn btn-primary btn-lg active" role="button">Submit</a>
+
+		</div>
+		<div class="logoCenter show-print">
+
+			<img src="images/aiim-logo.PNG" />
+
+		</div>
+	</div>
+
+</section>

@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	padding:0px;
+	margin:0px;
+	font-family:arial;
+}
+
+/* Configiration Setting */
+
+.container-fluid{
+	padding:0px;
+	margin:0px;
+}
+
+.logo_section{
+	padding:30px 0px 10px 0px !important;
+ 
+}
+
+.adani_title{
+	font-size:18px;
+	color:#d56f11;
+	height:42px;
+	padding-top:8px;
+	
+}
+
+.adani_bck{
+	background-color:#ededed;
+}
+
+nav{
+	padding-top:20px;
+}
+
+nav p{
+	font-size:12px;
+}
+
+nav h2{
+	font-size:18px;
+}
+
+.adani_hd_bck{
+	background-color:#ededed;
+}
+
+.adani_hd{	 
+	color:#000000;	 
+	border-left:#ffffff solid 1px;
+	border-right:#ffffff solid 1px;
+}
+
+.adani_hd h1{
+	font-size:22px;
+	font-weight:bold;
+}
+
+section h2{
+	font-size:20px;
+	font-weight:bold;
+	color:#f19027;
+	padding:10px;
+}
+
+.cust_btn{
+	background:none;
+	border:#fdb813 1px solid;
+	color:#fdb813;
+	margin:10px 0px 20px 0px;;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  background:none;
+  border:#fdb813 1px solid;
+  color:#fdb813;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+  
+}
+
+.flow_buttons{
+	margin:20px 0px 20px 0px;
+}
+ 
+.footer_black{
+	background-color:#000000;
+	height:150px;
+}
+
+footer img{
+	margin-left:48%;
+}
+
+.disabled_div{
+	opacity:.3;
+	-moz-opacity:.3;
+	-webkit-opacity:.3;
+	
+}
