@@ -1,7 +1,9 @@
 package com.ibm.aiim.service.user;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -184,7 +186,12 @@ public class UserServiceImpl implements UserService{
 		List<Tbluser> results = query.getResultList();
 		if (results!=null && results.size()>0){
 			for (Tbluser userObj : results){
-				
+				//UseRr created after Feb-07-2016 will have to activate the user. 
+				Date dateCreated  = userObj.getDtCreated();
+				Date demarkDate = (new GregorianCalendar(2016, Calendar.FEBRUARY, 6)).getTime();
+				if (dateCreated.after(demarkDate) && userObj.getStatus().equalsIgnoreCase("F")){
+					return appl;
+				}
 				if (userObj.getApp_rw_id()!=null && !userObj.getApp_rw_id().equals("NULL")){
 				
 				 query = entitymanager.createQuery("SELECT c FROM Tbltemp c  WHERE  c.email ='" +user.getEmailId()+"' "+ "AND c.id = " + Integer.parseInt(userObj.getApp_rw_id())  );

@@ -11,45 +11,45 @@ config(['$routeProvider', function($routeProvider) {
 
 	// route for the about page
 	.when('/personalInfo', {
-		templateUrl : 'templates/personal_info.html?id=v13',
+		templateUrl : 'templates/personal_info.html?id=v14',
 		controller  : 'UserController'
 	})
 	.when('/', {
-		templateUrl : 'templates/login.html?id=v13',
+		templateUrl : 'templates/login.html?id=v14',
 		controller  : 'UserController'
 	})
 	.when('/eductionInfo', {
-		templateUrl : 'templates/eduction_info.html?id=v13',
+		templateUrl : 'templates/eduction_info.html?id=v14',
 		controller  : 'UserController'
 	}).when('/createUser', {
-		templateUrl : 'templates/user_register.html?id=v13',
+		templateUrl : 'templates/user_register.html?id=v14',
 		controller  : 'UserController'
 	})
 	// route for the about page
 	.when('/workInfo', {
-		templateUrl : 'templates/work_info.html?id=v13',
+		templateUrl : 'templates/work_info.html?id=v14',
 		controller  : 'UserController'
 	})// route for the about page
 	.when('/additionalInfo', {
-		templateUrl : 'templates/additional_info.html?id=v13',
+		templateUrl : 'templates/additional_info.html?id=v14',
 		controller  : 'UserController'
 	}).when('/review', {
-		templateUrl : 'templates/review.html?id=v13',
+		templateUrl : 'templates/review.html?id=v14',
 		controller  : 'UserController'
 	}).when('/resultpage', {
-		templateUrl : 'templates/resultpage.html?id=v13',
+		templateUrl : 'templates/resultpage.html?id=v14',
 		controller  : 'UserController'
 	}).when('/adminMain', {
-		templateUrl : 'templates/admin_main.html?id=v13',
+		templateUrl : 'templates/admin_main.html?id=v14',
 		controller  : 'AdminController'
 	}).when('/regUsers', {
-		templateUrl : 'templates/admin_reguser.html?id=v13',
+		templateUrl : 'templates/admin_reguser.html?id=v14',
 		controller  : 'RegController'
 	}).when('/completedApps', {
-		templateUrl : 'templates/admin_completedapps.html?id=v13',
+		templateUrl : 'templates/admin_completedapps.html?id=v14',
 		controller  : 'AppCmplController'
 	}).when('/incompleteApps', {
-		templateUrl : 'templates/admin_incompleteapps.html?id=v13',
+		templateUrl : 'templates/admin_incompleteapps.html?id=v14',
 		controller  : 'AdminController'
 	});
 	
@@ -110,17 +110,17 @@ App.controller('loginCntrl', function($scope) {
 
 
 App.run(function($templateCache ,$http) {
-	  $http.get('templates/personal_info.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/eduction_info.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/work_info.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/user_register.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/additional_info.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/review.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/resultpage.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/admin_main.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/admin_reguser.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/admin_completedapps.html?id=v13', {cache:$templateCache});
-	  $http.get('templates/admin_incompleteapps.html?id=v13', {cache:$templateCache});
+	  $http.get('templates/personal_info.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/eduction_info.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/work_info.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/user_register.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/additional_info.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/review.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/resultpage.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/admin_main.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/admin_reguser.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/admin_completedapps.html?id=v14', {cache:$templateCache});
+	  $http.get('templates/admin_incompleteapps.html?id=v14', {cache:$templateCache});
 	  $http.get('templates/companydetails_tmp.htm', {cache:$templateCache});
 	  $http.get('templates/profqual_tmp.htm', {cache:$templateCache});
 	  $http.get('templates/graduate_tmp.htm', {cache:$templateCache});

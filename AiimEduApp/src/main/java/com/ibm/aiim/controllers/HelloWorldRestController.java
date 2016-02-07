@@ -119,10 +119,10 @@ public class HelloWorldRestController {
     }
   
      
-    //------------------- Update a User --------------------------------------------------------
+    //------------------- Activate User --------------------------------------------------------
      
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Void>  updateUser(@PathVariable("id") String id , UriComponentsBuilder ucBuilder) {
+    @RequestMapping(value = "/confirm", method = RequestMethod.GET)
+    public ResponseEntity<Void>  updateUser(@RequestParam(name = "key" ,required = false) String id, UriComponentsBuilder ucBuilder) {
         System.out.println("Updating User " + id);
          
         boolean actStatus = userService.activateId(id);

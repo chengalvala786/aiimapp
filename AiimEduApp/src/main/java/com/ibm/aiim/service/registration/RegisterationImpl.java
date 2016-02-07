@@ -243,7 +243,7 @@ public class RegisterationImpl implements RegisterationService{
 		highSchool.setSchoolName(applicationTable.getSchool12());
 		highSchool.setStreamName(applicationTable.getSchool12Major1());
 		highSchool.setStd12Division(applicationTable.getSchool12ClassDiv());
-		if (applicationTable.getSchool10Passing()!=null){
+		if (applicationTable.getSchool12Passing()!=null){
 			String date[] = applicationTable.getSchool12Passing().split("-");
 			if (date.length>1){
 				highSchool.setPassingMonth(date[0]);

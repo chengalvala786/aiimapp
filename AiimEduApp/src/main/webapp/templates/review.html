@@ -4,39 +4,40 @@
 		<div class="row">
 
 
-			<div class="col-lg-2 disabled_div">
+			<div class="col-xs-15 disabled_div">
 				<img src="images/personal_details.png" />
 				<h2>Personal</h2>
-				<p>Name, address & contact information</p>
+				<p class="hidden-xs">Name, address & contact information</p>
 			</div>
 
-			<div class="col-lg-3 disabled_div" >
+			<div class="col-xs-15  disabled_div">
 				<img src="images/education_details.png" />
 				<h2>Education</h2>
-				<p>School, college and other relevant education details</p>
+				<p class="hidden-xs">School, college and other relevant education details</p>
 			</div>
 
-			<div class="col-lg-3 disabled_div">
+			<div class="col-xs-15 disabled_div">
 				<img src="images/work_details.png" />
 				<h2>Work Experience</h2>
-				<p>Roles, responsibilies, and other related data</p>
+				<p class="hidden-xs">Roles, responsibilies, and other related data</p>
 			</div>
 
-			<div class="col-lg-2 disabled_div ">
+			<div class="col-xs-15 disabled_div">
 				<img src="images/additional_details.png" />
 				<h2>Additional Details</h2>
-				<p>Areas of Interest and extra curicular activites</p>
+				<p class="hidden-xs">Areas of Interest and extra curicular activites</p>
 			</div>
 
-			<div class="col-lg-2 ">
+			<div class="col-xs-15 ">
 				<img src="images/review_details.png" />
 				<h2>Review</h2>
-				<p>Reviwe the final application</p>
+				<p class="hidden-xs">Reviwe the final application</p>
 			</div>
 
 		</div>
 	</div>
 </nav>
+
 <section class="container-fluid">
 
 	<div class="container-fluid adani_hd_bck no-print">
@@ -86,11 +87,11 @@
 
 				</tr>
 				<tr>
-					<td colspan="3">
-						<table class="table table-bordered">
+					<td colspan="3" style="padding:0px;">
+						<table class="table" style="padding:0px;">
 							<tbody>
 								<tr>
-									<td width="64%">
+									<td width="64%" style="padding:0px;">
 
 										<table class="table table-bordered">
 											<tbody>
@@ -117,7 +118,7 @@
 											</tbody>
 										</table>
 									</td>
-									<td width="36%">
+									<td width="36%" style="padding:0px;">
 
 										<table class="table table-bordered">
 
@@ -551,10 +552,10 @@
 		</table>
 		<div class="flow_buttons no-print">
 			<a href="#additionalInfo" class="btn btn-primary btn-lg active"
-				ng-disabled="canSubmit==false"role="button" >Previous</a> <a onClick="window.print();return false"
+				role="button">Previous</a> <a onClick="window.print();return false"
 				class="btn btn-primary btn-lg active" role="button">Print this
 				page</a> <a ng-click="save('review')"
-				class="btn btn-primary btn-lg active"  ng-disabled="canSubmit==false" role="button">Submit</a>
+				class="btn btn-primary btn-lg active" role="button">Submit</a>
 
 		</div>
 		<div class="logoCenter show-print">

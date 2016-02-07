@@ -21,6 +21,7 @@ import com.ibm.aiim.util.DateUtil;
 
 
 
+
 public class PaymentService {
 	private static String login="14377";
 	private static String passWrd="ADANI@123";
@@ -35,7 +36,7 @@ public class PaymentService {
 		 String udf2 =  user.getEmailId();
 		 String udf3 =  user.getMobileNumber();
 		 String udf4 =  user.getAd1()  ;
-		 String ru = "http://174.133.117.142/AiimEduApp/tranResult";
+		 String ru = "http://www.aiim.ac.in/AiimEduApp/tranResult";
 		 int randomInt=0;
 		 Random randomGenerator = new Random();
 		    for (int idx = 1; idx <= 10; ++idx){

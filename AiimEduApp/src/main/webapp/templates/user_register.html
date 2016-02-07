@@ -11,35 +11,31 @@
 			novalidate>
 			
 			<h2>Registration Form</h2>
-			<div class="form-group">
-				<div class="row">
+          <div class="row">
 					<div ng-show="isFormError" class=" col-xs-12 alert alert-danger">
 						<strong>!Please fill the required fields </strong>
 					</div>
 				</div>
-			</div>
+          <div class="alter_group">
+		 
+				
+			 
 
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-12">
-						<label class="control-label required">First name</label> <input
-							type="text" ng-pattern="/^[a-zA-Z ]*$/" required
+					<div class="col-sm-6 col-xs-12 col-md-4">
+						<label class="control-label required">First name</label> 
+                        <input 	type="text" ng-pattern="/^[a-zA-Z ]*$/" required
 							ng-model="personalInfo.fName" class="form-control" required
 							name="first_name" /> <span class="field-error" ng-show="isFName">This
 							is a required field.</span> <span class="field-error"
 							ng-show="isFNamePtrErr">First Name cannot contain numbers
 							or special characters"</span>
-
-
-
 					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="row">
+			 
 
-					<div class="col-xs-12">
+					<div class="col-sm-6 col-xs-12 col-md-4">
 						<label class="control-label ">Middle Name</label> <input
 							ng-pattern="/^[a-zA-Z ]*$/" type="text"
 							ng-model="personalInfo.mName" class="form-control" 
@@ -58,7 +54,7 @@
 			<div class="form-group">
 				<div class="row">
 
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required">Last Name</label> <input
 							type="text" ng-pattern="/^[a-zA-Z ]*$/"
 							ng-model="personalInfo.lName" class="form-control" required
@@ -74,7 +70,8 @@
 
 			<div class="form-group">
 				<label class="control-label required">Gender</label>
-				<div>
+				<div class="row">
+                	<div class="col-xs-12 col-md-4 col-sm-6">
 					<label class="radio-inline"> <input type="radio"
 						name="gender" ng-model="personalInfo.gender" required value="M" />
 						Male
@@ -83,16 +80,18 @@
 						Female
 					</label> <span class="field-error" ng-show="isGender">This is a
 						required field.</span>
-
+				</div>
 
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6 col-sm-12">
-						<label class="control-label required">Date Of Birth</label> <input
-							type="text" style="display: inline; width: 90%" name="dob"
+					<div class="col-xs-12 col-md-4 col-sm-6">
+						<div>
+                        <label class="control-label required">Date Of Birth</label>
+                         <input
+							type="text" style="display: inline; width: 80%" name="dob"
 							class="form-control" uib-datepicker-popup="dd-MM-yyyy"
 							ng-model="dt" is-open="status.opened" ng-required="true"
 							close-text="Close" /> <span style="display: inline;"
@@ -101,15 +100,15 @@
 								ng-click="open($event)">
 								<i class="glyphicon glyphicon-calendar"></i>
 							</button>
-						</span> <small
-									class="text-muted">(DD-MM-YYYY) </small> <span class="field-error" ng-show="isdob">This is a
+                             
+						</span></div> <small 	class="text-muted">(DD-MM-YYYY) </small> <span class="field-error" ng-show="isdob">This is a
 							required field.</span>
 							
 
 
 					</div>
 
-					<div class="col-md-6 col-sm-12">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required">Mobile Number</label> <input
 							type="text" class="form-control" required ng-minlength="10"
 							ng-maxlength="10" ng-model="personalInfo.mobileNumber"
@@ -133,7 +132,7 @@
 			<div class="form-group">
 				<div class="row">
 
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required">Email Id</label> <input
 							type="text" ng-model="personalInfo.emailId" class="form-control"
 							required name="email_id" /> <span class="field-error"
@@ -141,19 +140,11 @@
 							class="field-error" ng-show="isInvalidEmail">This is not a
 							valid email.</span> <span class="field-error" ng-show="isEmailMacthFail">Email
 							match failed.</span>
-
-
-
 					</div>
 
-				</div>
-			</div>
+				 
 
-
-			<div class="form-group">
-				<div class="row">
-
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required">Verify Email Id</label> <input
 							type="text" ng-model="emailId" class="form-control" required
 							name="email_id" /> <span class="field-error"
@@ -161,16 +152,14 @@
 							class="field-error" ng-show="isInvalidEmail">This is not a
 							valid email.</span> <span class="field-error" ng-show="isEmailMacthFail">Email
 							match failed.</span>
-
-
-
 					</div>
-
 				</div>
 			</div>
+            
+            
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required">Enter Password</label> <input
 							type="password" maxlength="15" required
 							ng-model="personalInfo.password" class="form-control"
@@ -182,7 +171,7 @@
 					</div>
 
 
-					<div class="col-xs-6">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 						<label class="control-label required ">Re-Enter Password</label> <input
 							type="password" maxlength="15" class="form-control"
 							ng-model="password" name="password2" /> <span
@@ -195,7 +184,7 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-12 col-md-4 col-sm-6">
 
 
 						<div vc-recaptcha key="'6LfjqhYTAAAAAOXM0tjN2Ui83qhVewKIE5ScGPyA'"></div>
@@ -205,15 +194,17 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-
+            
+            
+            </div> <!-- Close of Alter Group -->
+			 
 				<div class="flow_buttons">
 					<a class="btn btn-primary btn-lg active" ng-click="createUser()"
 						role="button">Create User </a>
 				</div>
 
 
-			</div>
+			 
 
 
 		</form>
