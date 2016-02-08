@@ -32,7 +32,7 @@ import com.ibm.aiim.ui.model.Application;
 import com.ibm.aiim.ui.model.PersonalInfo;
  
 @RestController
-public class HelloWorldRestController {
+public class AiimRestController {
  
     @Autowired
     RegisterationService regService;  //Service which will do all data retrieval/manipulation work
