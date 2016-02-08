@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -122,7 +121,7 @@ public class HelloWorldRestController {
     //------------------- Activate User --------------------------------------------------------
      
     @RequestMapping(value = "/confirm", method = RequestMethod.GET)
-    public ResponseEntity<Void>  updateUser(@RequestParam(name = "key" ,required = false) String id, UriComponentsBuilder ucBuilder) {
+    public void  updateUser(@RequestParam(name = "key" ,required = false) String id, UriComponentsBuilder ucBuilder, HttpServletResponse response) throws IOException {
         System.out.println("Updating User " + id);
          
         boolean actStatus = userService.activateId(id);
@@ -135,8 +134,11 @@ public class HelloWorldRestController {
         	
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/").buildAndExpand("").toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+        params.add("as", "T");
+        
+        response.sendRedirect("/AiimEduApp/#/?as=T" );
+       
         
        
        

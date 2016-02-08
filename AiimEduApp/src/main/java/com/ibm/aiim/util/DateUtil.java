@@ -9,6 +9,7 @@ public class DateUtil {
 		String newFormat ="";
 		if (orgnialDt!=null ){
 			
+			//orgnialDt.setDate(orgnialDt.getDate()+1);
 			String patternFrom = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 			SimpleDateFormat format = new SimpleDateFormat(patternFrom);
 			try {
@@ -53,6 +54,7 @@ public class DateUtil {
 		    SimpleDateFormat format = new SimpleDateFormat(patternFrom);
 		    try {
 		       date = format.parse(orgnialDt);
+		       date.setDate(date.getDate()+1);
 		      
 			 	
 		    } catch (ParseException e) {

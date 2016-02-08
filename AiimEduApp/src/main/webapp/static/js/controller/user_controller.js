@@ -3,7 +3,7 @@
 App.controller('UserController', ['$scope', 'regService','UserService','$rootScope','$log' ,'$location', 'Upload' , '$base64', '$routeParams','fileUpload'  , 'vcRecaptchaService' ,function($scope, regService,UserService,$rootScope,$log, $location, Upload,$base64,$routeParams,fileUpload ,vcRecaptchaService) {
 
 	$("a").on('click',  function(event){
-
+		$location.search( 'as', null );
 		$( "form" ).addClass( "submitted" );
 
 	});
@@ -11,9 +11,12 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 	if ($routeParams.cs === false){
 		$scope.canSubmit = $routeParams.cs;	
 	}
-	
-	
-	
+	$rootScope.actActivate=false;
+	if ($routeParams.as === 'T'){
+		$rootScope.actActivate = true;	
+		$routeParams.as =false;
+	}
+
 	
 	$scope.upload = function (file, tranType) {
 		var oMyForm = new FormData();
@@ -75,7 +78,7 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 	$scope.setDate = function(year, month, day) {
 		return new Date(year, month, day);
 	};
-
+	$scope.currendate = new Date();
 
 
 	$scope.status = {
@@ -240,6 +243,7 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 
 	$scope.personalInfo={};
 	$scope.login = function() {
+		$location.search( 'as', null );
 		console.log("Application"+ $scope.personalInfo);
 		$('#main').block({ 
 			message: '<h1>Login...</h1>', 
@@ -258,7 +262,6 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 							var dob = $rootScope.application.personalInfo.dob;
 							dob  = dob.substring(0, dob.indexOf("T"));
 							$rootScope.application.personalInfo.dob = new Date(dob);
-
 						}
 
 						if($rootScope.application.eductionalInfo.admissionTest!=null && $rootScope.application.eductionalInfo.admissionTest.adm_test_name!=null ){

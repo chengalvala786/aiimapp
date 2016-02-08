@@ -165,8 +165,8 @@ public class RegisterationImpl implements RegisterationService{
 		personInfo.setGender(applicationTable.getSex());
 		personInfo.setMobileNumber(applicationTable.getPhoneMobile());
 		if (applicationTable.getPhoneHome()!=null){
-			if ( applicationTable.getPhoneHome().contains("-")){
-				String phone[] = applicationTable.getPhoneHome().split("-");
+			if ( applicationTable.getPhoneHome().contains("-L-")){
+				String phone[] = applicationTable.getPhoneHome().split("-L-");
 				if (phone.length>1){
 					personInfo.setStdCode(phone[0]);
 					personInfo.setNumber(phone[1]);
@@ -185,7 +185,7 @@ public class RegisterationImpl implements RegisterationService{
 
 
 
-		personInfo.setNumber(applicationTable.getPhoneHome());
+		//personInfo.setNumber(applicationTable.getPhoneHome());
 		int mstatus = applicationTable.getMaritalStatus();
 		personInfo.setMaritalStatus(String.valueOf(mstatus));
 		if (applicationTable.getPhotograph()!=null ){
@@ -279,7 +279,7 @@ public class RegisterationImpl implements RegisterationService{
 		}
 
 		graduate.setMarks(applicationTable.getBachMarks11());
-		graduate.setMaxmarks(applicationTable.getBachMarks11());
+		graduate.setMaxmarks(applicationTable.getBachMaxMarks11());
 
 
 		educationInfo.setGd(graduate);
@@ -293,6 +293,7 @@ public class RegisterationImpl implements RegisterationService{
 			graduate.setSubject(applicationTable.getBachSub2());
 			graduate.setCollege(applicationTable.getBachCollege2());
 			graduate.setUniversity(applicationTable.getBachUniv2());
+			graduate.setDivision(applicationTable.getBachLetGrade2());
 			if (applicationTable.getBachFrm21()!=null){
 				String date[] = applicationTable.getBachFrm21().split("-");
 				if (date.length>1){
@@ -309,7 +310,7 @@ public class RegisterationImpl implements RegisterationService{
 				}
 			}
 			graduate.setMarks(applicationTable.getBachMarks21());
-			graduate.setMaxmarks(applicationTable.getBachMarks21());
+			graduate.setMaxmarks(applicationTable.getBachMaxMarks21());
 
 			addlGd.add(graduate);
 		}
@@ -319,6 +320,7 @@ public class RegisterationImpl implements RegisterationService{
 			graduate.setSubject(applicationTable.getBachSub3());
 			graduate.setCollege(applicationTable.getBachCollege3());
 			graduate.setUniversity(applicationTable.getBachUniv3());
+			graduate.setDivision(applicationTable.getBachLetGrade3());
 
 			if (applicationTable.getBachFrm31()!=null){
 				String date[] = applicationTable.getBachFrm31().split("-");
@@ -336,7 +338,7 @@ public class RegisterationImpl implements RegisterationService{
 				}
 			}
 			graduate.setMarks(applicationTable.getBachMarks31());
-			graduate.setMaxmarks(applicationTable.getBachMarks31());
+			graduate.setMaxmarks(applicationTable.getBachMaxMarks31());
 			addlGd.add(graduate);
 		}
 		educationInfo.setGdAdd(addlGd);
@@ -349,8 +351,11 @@ public class RegisterationImpl implements RegisterationService{
 		pg.setSubject(applicationTable.getMstrSub1());
 		pg.setCollege(applicationTable.getMstrCollege1());
 		pg.setUniversity(applicationTable.getMstrUniv1());
-
-		if (applicationTable.getMstrFrm11()!=null){
+		pg.setMarks(applicationTable.getMstrMarks11());
+		pg.setMaxmarks(applicationTable.getMstrMaxMarks11());
+		pg.setDivision(applicationTable.getMstrLetGrade1());
+				
+				if (applicationTable.getMstrFrm11()!=null){
 			String date[] = applicationTable.getMstrFrm11().split("-");
 			if (date.length>1){
 			pg.setFromMonth(date[0]);
@@ -378,7 +383,9 @@ public class RegisterationImpl implements RegisterationService{
 			pg.setSubject(applicationTable.getMstrSub2());
 			pg.setCollege(applicationTable.getMstrCollege2());
 			pg.setUniversity(applicationTable.getMstrUniv2());
-
+			pg.setMarks(applicationTable.getMstrMarks21());
+			pg.setMaxmarks(applicationTable.getMstrMaxMarks21());
+			pg.setDivision(applicationTable.getMstrLetGrade2());
 			if (applicationTable.getMstrFrm21()!=null){
 				String date[] = applicationTable.getMstrFrm21().split("-");
 				if (date.length>1){
@@ -404,7 +411,9 @@ public class RegisterationImpl implements RegisterationService{
 			pg.setSubject(applicationTable.getMstrSub3());
 			pg.setCollege(applicationTable.getMstrCollege3());
 			pg.setUniversity(applicationTable.getMstrUniv3());
-
+			pg.setMarks(applicationTable.getMstrMarks31());
+			pg.setMaxmarks(applicationTable.getMstrMaxMarks31());
+			pg.setDivision(applicationTable.getMstrLetGrade3());
 			if (applicationTable.getMstrFrm31()!=null){
 				String date[] = applicationTable.getMstrFrm31().split("-");
 				if (date.length>1){
@@ -432,7 +441,7 @@ public class RegisterationImpl implements RegisterationService{
 		Pq pq = new Pq();
 		educationInfo.setPq(pq);
 		pq.setObtained(applicationTable.getProfDeg1());
-		pg.setCollege(applicationTable.getProfInst1());
+		pq.setCollege(applicationTable.getProfInst1());
 		pq.setMarks(applicationTable.getProfMarks1());
 		if (applicationTable.getProfMnth1()!=null && applicationTable.getProfMnth1().contains("-")){
 			String date[] = applicationTable.getProfMnth1().split("-");
@@ -452,7 +461,7 @@ public class RegisterationImpl implements RegisterationService{
 		if (applicationTable.getProfDeg2()!=null){
 			pq = new Pq();
 			pq.setObtained(applicationTable.getProfDeg2());
-			pg.setCollege(applicationTable.getProfInst2());
+			pq.setCollege(applicationTable.getProfInst2());
 			pq.setMarks(applicationTable.getProfMarks2());
 					if (applicationTable.getProfMnth2()!=null && applicationTable.getProfMnth2().contains("-")){
 						String date[] = applicationTable.getProfMnth2().split("-");
@@ -469,7 +478,7 @@ public class RegisterationImpl implements RegisterationService{
 		if (applicationTable.getProfDeg3()!=null){
 			pq = new Pq();
 			pq.setObtained(applicationTable.getProfDeg3());
-			pg.setCollege(applicationTable.getProfInst3());
+			pq.setCollege(applicationTable.getProfInst3());
 			pq.setMarks(applicationTable.getProfMarks3());
 					if (applicationTable.getProfMnth3()!=null && applicationTable.getProfMnth3().contains("-")){
 						String date[] = applicationTable.getProfMnth3().split("-");
@@ -746,7 +755,7 @@ public class RegisterationImpl implements RegisterationService{
 		applicationTable.setMailingAddr(appl.getPersonalInfo().getAd1() +", "+appl.getPersonalInfo().getAd2() +", "+ appl.getPersonalInfo().getCity() +", "+ appl.getPersonalInfo().getCountry()+", "+ appl.getPersonalInfo().getPincode());
 
 		if (appl.getPersonalInfo().getStdCode() !=null && appl.getPersonalInfo().getNumber()!=null){
-			applicationTable.setPhoneHome(appl.getPersonalInfo().getStdCode() + "-" + appl.getPersonalInfo().getNumber());
+			applicationTable.setPhoneHome(appl.getPersonalInfo().getStdCode() + "-L-" + appl.getPersonalInfo().getNumber());
 		}else{
 			applicationTable.setPhoneHome(appl.getPersonalInfo().getNumber());
 		}
@@ -873,10 +882,11 @@ public class RegisterationImpl implements RegisterationService{
 				applicationTable.setMstrSub1(pg.getSubject());
 				applicationTable.setMstrCollege1(pg.getCollege());
 				applicationTable.setMstrUniv1(pg.getUniversity());
-				applicationTable.setMstrMarks11(pg.getMaxmarks());
+				
 				if (pg.getFromMonth()!=null && pg.getFromYear()!=null){	
 					applicationTable.setMstrFrm11(pg.getFromMonth()+"-"+pg.getFromYear());
 				}
+				applicationTable.setMstrMaxMarks11(pg.getMaxmarks());
 				applicationTable.setMstrMarks11(pg.getMarks());
 				applicationTable.setMstrLetGrade1(pg.getDivision());
 				if (pg.getToMonth()!=null &&pg.getToYear()!=null){	
@@ -893,10 +903,11 @@ public class RegisterationImpl implements RegisterationService{
 						applicationTable.setMstrSub2(pgA.getSubject());
 						applicationTable.setMstrCollege2(pgA.getCollege());
 						applicationTable.setMstrUniv2(pgA.getUniversity());
-						applicationTable.setMstrMarks21(pgA.getMaxmarks());
+						
 						if (pg.getFromMonth()!=null && pgA.getFromYear()!=null){	
 							applicationTable.setMstrFrm21(pgA.getFromMonth()+"-"+pgA.getFromYear());
 						}
+						applicationTable.setMstrMaxMarks21(pgA.getMaxmarks());
 						applicationTable.setMstrMarks21(pgA.getMarks());
 						applicationTable.setMstrLetGrade2(pgA.getDivision());
 						if (pgA.getToMonth()!=null &&pgA.getToYear()!=null){	
@@ -912,6 +923,7 @@ public class RegisterationImpl implements RegisterationService{
 						if (pg.getFromMonth()!=null && pgA.getFromYear()!=null){	
 							applicationTable.setMstrFrm31(pgA.getFromMonth()+"-"+pgA.getFromYear());
 						}
+						applicationTable.setMstrMaxMarks31(pgA.getMaxmarks());
 						applicationTable.setMstrMarks31(pgA.getMarks());
 						applicationTable.setMstrLetGrade3(pgA.getDivision());
 						if (pgA.getToMonth()!=null &&pgA.getToYear()!=null){	
@@ -925,7 +937,7 @@ public class RegisterationImpl implements RegisterationService{
 
 			if (pq!=null ){
 				applicationTable.setProfDeg1(pq.getObtained());
-				applicationTable.setProfInst1(pg.getCollege());
+				applicationTable.setProfInst1(pq.getCollege());
 				applicationTable.setProfMarks1(pq.getMarks());
 				if (pq.getFrom_month()!=null && pq.getFrom_year() !=null){
 					applicationTable.setProfMnth1(pq.getFrom_month()+"-"+pq.getFrom_year());
@@ -940,7 +952,7 @@ public class RegisterationImpl implements RegisterationService{
 					pq =pqAdList.get(index); 
 					if (index ==0){
 						applicationTable.setProfDeg2(pq.getObtained());
-						applicationTable.setProfInst2(pg.getCollege());
+						applicationTable.setProfInst2(pq.getCollege());
 						applicationTable.setProfMarks2(pq.getMarks());
 						if (pq.getFrom_month()!=null && pq.getFrom_year() !=null){
 							applicationTable.setProfMnth2(pq.getFrom_month()+"-"+pq.getFrom_year());
@@ -949,7 +961,7 @@ public class RegisterationImpl implements RegisterationService{
 
 					}else if (index ==1){
 						applicationTable.setProfDeg3(pq.getObtained());
-						applicationTable.setProfInst3(pg.getCollege());
+						applicationTable.setProfInst3(pq.getCollege());
 						applicationTable.setProfMarks3(pq.getMarks());
 						if (pq.getFrom_month()!=null && pq.getFrom_year() !=null){
 							applicationTable.setProfMnth3(pq.getFrom_month()+"-"+pq.getFrom_year());
@@ -1031,7 +1043,7 @@ public class RegisterationImpl implements RegisterationService{
 						applicationTable.setAddrEmp3(work.getCmpAd1() +", " +work.getCmpAd2() +", "+work.getCmpCity()+ "," + work.getCmpState() +", " + work.getCmpPinCode());
 						applicationTable.setDesigEmp3(work.getDesignation());
 						applicationTable.setRoleEmp3(work.getRoles());
-						applicationTable.setSalaryEmp2(work.getCtc());
+						applicationTable.setSalaryEmp3(work.getCtc());
 
 					}
 

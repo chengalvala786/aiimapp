@@ -126,13 +126,13 @@
 					<div class="col-sm-6 col-xs-12 col-md-4">
 						<label class="control-label required" style="display:block;">Date Of Birth</label> 
                         <input 		type="text" style="display: inline; " name="dob"
-							ng-disabled="true" class="form-control dobwidth"
+							 class="form-control dobwidth"
 							uib-datepicker-popup="dd-MM-yyyy"
 							ng-model="application.personalInfo.dob" is-open="status.opened"
 							close-text="Close" /> <span style="display: inline;"
 							class="input-group-btn">
 							<button type="button" class="btn btn-default"
-								ng-click="open($event)" ng-disabled="true">
+								ng-click="open($event)" >
 								<i class="glyphicon glyphicon-calendar"></i>
 							</button>
 						</span> <span class="field-error" ng-show="isdob">This is a

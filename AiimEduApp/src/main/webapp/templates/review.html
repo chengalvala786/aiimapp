@@ -400,7 +400,7 @@
 					<td>Registration Number</td>
 					<td>Overall Score</td>
 					<td>Overall percentile</td>
-					<td>View Score Card</td>
+					<td class="no-print">View Score Card</td>
 				</tr>
 				<tr>
 					<td>{{application.eductionalInfo.admissionTest.adm_test_name}}</td>
@@ -409,7 +409,7 @@
 					<td>{{application.eductionalInfo.admissionTest.regnumber}}</td>
 					<td>{{application.eductionalInfo.admissionTest.adm_score}}</td>
 					<td>{{application.eductionalInfo.admissionTest.adm_percentage}}</td>
-					<td><a  ng-href="{{getCard()}}"  target="_blank">View Score Card</a></td>
+					<td class="no-print" ><a class="no-print" ng-href="{{getCard()}}"  target="_blank">View Score Card</a></td>
 					
 					
 					
@@ -481,7 +481,7 @@
 			</tbody>
 		</table>
 		<div>
-			<label><strong>If under any circumstances, any of
+			<label><strong>*If under any circumstances, any of
 					the preferred centers are dropped, the applicant will be
 					accommodated in the nearest venue/AIIM campus for interview.</strong> </label>
 		</div>
@@ -544,7 +544,7 @@
 				<tr>
 					<th colspan="6" style="min-width: 200px"></th>
 					<th colspan="6">Date:
-						<p style="display: inline" ng-bind="dt | date:'dd-MM-yyyy'"></p>
+						<p style="display: inline" ng-bind="currendate | date:'dd-MM-yyyy'"></p>
 					</th>
 				</tr>
 			</thead>
