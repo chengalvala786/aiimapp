@@ -151,6 +151,10 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 	<script src="<c:url value='/static/js/ui-bootstrap-tpls-0.14.3.js' />"></script>
 
 	<script src="<c:url value='/static/js/angular-recaptcha.js' />"></script>
+	<script src="<c:url value='/static/js/angular-credit-cards.js' />"></script>
+	
+	
+	
 
 
 	<script>
