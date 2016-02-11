@@ -1,7 +1,7 @@
 'use strict';
 
 
-var App = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'base64', 'rorymadden.date-dropdowns' , 'ui.grid', 'vcRecaptcha']).
+var App = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'base64', 'rorymadden.date-dropdowns' , 'ui.grid', 'vcRecaptcha' ,'credit-cards' ]).
 config(['$routeProvider', function($routeProvider) {
 	
 	
@@ -47,6 +47,9 @@ config(['$routeProvider', function($routeProvider) {
 		controller  : 'RegController'
 	}).when('/completedApps', {
 		templateUrl : 'templates/admin_completedapps.html?id=v15',
+		controller  : 'AppCmplController'
+	}).when('/cardInfo', {
+		templateUrl : 'templates/creditcard.html?id=v15',
 		controller  : 'AppCmplController'
 	}).when('/incompleteApps', {
 		templateUrl : 'templates/admin_incompleteapps.html?id=v15',
