@@ -88,5 +88,67 @@ public static String sendMail(PersonalInfo user, String actKey){
 	return "";
 	
 }
-
+public static String sendPswdMail(PersonalInfo user, String password){
+	try {
+		String subject = "Password Reminder";
+		Properties props = new Properties();
+		boolean isAuthenticationRequire = false;
+		props.put("mail.smtp.ehlo", "false");
+		props.put("mail.smtp.auth", isAuthenticationRequire);
+		props.put("mail.smtp.starttls.enable", "false");
+		String body=  "<p> Dear " +"Applicant"+ "</p>";
+		body =  body + "<p> &nbsp; </p>";	
+		body = body+ "<p>Your password for <a href='http://www.aiim.ac.in/AiimEduApp/'>http://aiim.ac.in</a> is "+password+"</p>"; 
+		String sender = "Administrator";
+		String sender_mail = "admissions@aiim.ac.in";
+		final String host = "117.240.210.234";
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.port", "25");
+		props.put("mail.debug", true);
+		Session session;
+		
+		if ( isAuthenticationRequire ) {
+			session = Session.getInstance(props,
+					new javax.mail.Authenticator() {
+						protected PasswordAuthentication getPasswordAuthentication() {
+							return new PasswordAuthentication("generic.aiim@adani.com", "password");
+						}
+					});
+		}	
+		else{
+			session = Session.getInstance(props);
+		}
+		
+		System.out.println("Session Created");
+		try {
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(sender_mail , sender));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmailId()));
+			message.setSubject(subject);
+			message.setContent(body, "text/html");
+			System.out.println(body);
+			Transport transport = session.getTransport("smtp");	
+			transport.send(message);
+			System.out.println("Message Sent");
+			
+			
+		} catch (MessagingException e) {
+			System.out.println("===================================== mail send error");
+			System.out.println(e.getMessage());
+			System.out.println("===================================== mail send error");
+			e.printStackTrace();
+			
+		
+		}
+			
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		System.err.println("Error sending email" + e.getMessage());
+		
+	}
+	
+	return "";
+	
+}
 }

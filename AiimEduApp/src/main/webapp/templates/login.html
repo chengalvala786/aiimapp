@@ -1,71 +1,111 @@
 
-<div ng-controller="loginCntrl" class="container">
-	<div class="col-sm-8 col-sm-offset-2">
+<div ng-controller="loginCntrl" class="container" style="height: 700px;">
+
+	<div class="row">
+		<div class="col-lg-4 col-md-3 col-sm-2 col-xs-12"></div>
+		<div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 boxbeauty">
 
 
-		<div ng-show="isUserCreated==true" class="alert alert-success">
-			<strong> Thank you for registering for 2-year full-time PGDM (Infrastructure Management). 
-You will soon receive a mail from us. If you do not get the e-mail, please check your spam / junk mail folder. 
-Please login to complete your application. 
-			</strong>
-		</div>
-	<div ng-show="actActivate==true" class="alert alert-success">
-			<strong>Your account has been activated. Please login to complete the application.
-			</strong>
-		</div>
+			<div ng-show="isUserCreated==true" class="alert alert-success">
+				<strong> Thank you for registering for 2-year full-time
+					PGDM (Infrastructure Management). You will soon receive a mail from
+					us. If you do not get the e-mail, please check your spam / junk
+					mail folder. Please login to complete your application. </strong>
+			</div>
+			<div ng-show="actActivate==true" class="alert alert-success">
+				<strong>Your account has been activated. Please login to
+					complete the application. </strong>
+			</div>
 
-		<!-- PAGE HEADER -->
+			<div ng-show="pswdReq==true" class="alert alert-success">
+				<strong>Your password has been emailed to you at your registered email.
+ 				</strong>
+			</div>
 
-		<div class="page-header">
-			<h1>Login</h1>
-		</div>
-		<!-- FORM -->
-		<!-- pass in the variable if our form is valid or invalid -->
-		<form name="userForm" ng-app novalidate>
 
-			<!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
-			<div class="form-group">
 
+			<!-- FORM -->
+			<!-- pass in the variable if our form is valid or invalid -->
+			<form name="userForm" ng-app novalidate>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="#createUser"
+							class="newregister btn btn-warning btn-block" role="button">REGISTER
+							NOW</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<h1 class="lgmargin">
+							<a href="#createUser" class="img-circle" role="button">OR</a>
+						</h1>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<h2
+							style="margin: 0px; padding: 0px; margin-left: 10px !important; font-size: 25px; font-weight: bold;">LOGIN</h2>
+					</div>
+
+				</div>
+
+				<!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
 
 				<!-- EMAIL -->
-				<div class="form-group">
-					<label>Email</label> <input type="email" name="email"
-						class="form-control" ng-model="personalInfo.emailId" required>
-					<p ng-show="userForm.email.$invalid && !userForm.email.$pristine"
-						class="field-error">Enter Valid Email ID</p>
-					<p ng-show="failedLogin" class="field-error">Email Id/Password
-						used is invalid.</p>
+				<div class="form-group logForm">
+					<div class="row">
+						<div class="col-xs-12 ">
+							<label>Email</label> <input type="email" name="email"
+								class="form-control" ng-model="personalInfo.emailId" required>
+							<p ng-show="userForm.email.$invalid && !userForm.email.$pristine"
+								class="field-error">Enter Valid Email ID</p>
+							<p ng-show="failedLogin" class="field-error">Email
+								Id/Password used is invalid.</p>
+						</div>
+					</div>
 				</div>
 				<!-- PASSWORD -->
 
-				<div class="form-group">
-					<label>Password</label> <input type="password" name="password"
-						class="form-control" ng-model="personalInfo.password" required>
-					<p
-						ng-show="userForm.password.$invalid && !userForm.password.$pristine"
-						class="help-block">Password is required</p>
-
+				<div class="form-group logForm">
+					<div class="row">
+						<div class="col-xs-12 ">
+							<label>Password</label> <input type="password" name="password"
+								class="form-control" ng-model="personalInfo.password" required>
+							<p
+								ng-show="userForm.password.$invalid && !userForm.password.$pristine"
+								class="help-block">Password is required</p>
+						</div>
+					</div>
 				</div>
 
-				<!-- SUBMIT BUTTON -->
-				<div class="form-group">
+				<div class="form-group logForm">
 					<div class="row">
-						<div class="col-xs-4"></div>
-						<div class="col-xs-2">
 
-							<a ng-click="login()" class="btn btn-primary btn-lg active"
+						<div class="col-md-6 hidden-sm">
+							 <a href="#pswd">Forgot Password</a>
+						</div>
+						<div class="col-md-6 col-sm-12 text-right"></div>
+					</div>
+				</div>
+				<!-- SUBMIT BUTTON -->
+				<div class="form-group logForm">
+					<div class="row">
+
+						<div class="col-md-6 hidden-sm"></div>
+						<div class="col-md-6 col-sm-12 text-right">
+							<a ng-click="login()" class="btn btn-warning btn-lg active"
 								ng-model="password" role="button">Submit</a>
 						</div>
-						<div class="col-xs-2">
-
-							<a href="#createUser" class="btn btn-warning btn-lg active"
-								role="button">New Registration</a>
-						</div>
-						<div class="col-xs-4"></div>
 					</div>
-		</form>
+				</div>
+			</form>
 
+
+
+			<div class="col-lg-4 col-md-3 col-sm-2 col-xl-12"></div>
+		</div>
+		<!-- row -->
 	</div>
-	<!-- col-sm-8 -->
-</div>
-<!-- /container -->
+	<!-- /container -->

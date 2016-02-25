@@ -17,7 +17,7 @@ public interface UserService {
 	String saveUser(PersonalInfo user);
 	
 	List<PersonalInfo>  findAllUsers();
-	
+	boolean resetRequest(PersonalInfo user);
 	
 	boolean activateId(String id);
 	

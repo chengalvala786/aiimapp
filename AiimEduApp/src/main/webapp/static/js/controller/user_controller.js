@@ -17,7 +17,7 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		$routeParams.as =false;
 	}
 
-	
+
 	$scope.upload = function (file, tranType) {
 		var oMyForm = new FormData();
 
@@ -280,31 +280,26 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 						if ($rootScope.application.personalInfo.languages ==null){
 							$rootScope.application.personalInfo.languages.push(newRecord);
 						}
-						
-					if ($rootScope.application.acceptedDate === ""){	
-						if (pageNo==="1"){
-							$location.path("personalInfo");
-						}else if (pageNo==="2"){
-							$location.path("eductionInfo");
-						}else if (pageNo==="3"){
-							$location.path("workInfo");
-						}else if (pageNo==="4"){
-							$location.path("additionalInfo");
+
+						if ($rootScope.application.acceptedDate === ""){	
+							if (pageNo==="1"){
+								$location.path("personalInfo");
+							}else if (pageNo==="2"){
+								$location.path("eductionInfo");
+							}else if (pageNo==="3"){
+								$location.path("workInfo");
+							}else if (pageNo==="4"){
+								$location.path("additionalInfo");
+							}else{
+								$location.path("personalInfo");
+							}
 						}else{
-							$location.path("personalInfo");
-						}
-					}else{
-						if ($rootScope.application.tranId !=null){
-							$location.path("review").search({cs: false});
-						}else{
-							$location.path("resultpage");
-						}
-					}	
-
-
-
-
-
+							if ($rootScope.application.tranId !=null){
+								$location.path("review").search({cs: false});
+							}else{
+								$location.path("resultpage");
+							}
+						}	
 					}else{
 						$scope.failedLogin=true;
 
@@ -317,9 +312,9 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		);
 	};
 	$scope.captchaValid =false;
-	$scope.validateCaptcha = function(){
+	$scope.validateCaptcha = function(userInfoForm){
 		if(vcRecaptchaService.getResponse() === ""){ //if string is empty
-			$scope.userInfoForm.$invalid = true;
+			userInfoForm.$invalid = true;
 			$scope.captchaErr =true;
 			return false;
 		}else {
@@ -335,12 +330,12 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 				async: false,
 				success: function(response){
 					if(response.success != true){
-						$scope.userInfoForm.$invalid = true;
+						userInfoForm.$invalid = true;
 						$scope.captchaErr =true;
 						vcRecaptchaService.reset();
 						return false;
 					}else{
-						
+
 						$scope.captchaValid=true;
 					}
 				}
@@ -351,12 +346,45 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		}
 
 	};
+	$scope.resetPswdReq = function() {
+		console.log("Application"+ $scope.personalInfo);
+		if ($scope.captchaValid === false){
+			$scope.validateCaptcha($scope.forgotPswdForm);
 
+		}
+
+		
+		if ($scope.forgotPswdForm.$invalid ) { 
+			$scope.isFormError =$scope.forgotPswdForm.$invalid;
+			$scope.isEmptyEmail = $scope.forgotPswdForm.email_id.$error.required;
+				
+		}else{
+			$('#main').block({ 
+				message: '<h1>Creating User</h1>', 
+				css: { border: '3px solid #a00' } 
+			}); 
+			UserService.reqPswdReset($scope.personalInfo)
+			.then(
+					function(data){
+						console.log('Data saved while creating User.'+ data);
+						$('#main').unblock();
+						$rootScope.pswdReq = true;
+						$location.path("/");
+					} ,
+					function(errResponse){
+						$('#main').unblock();
+						$scope.isUserCreateFailed =true;
+						console.error('Error while creating User.');
+					}	
+			);
+
+		}
+	};
 	$scope.createUser = function() {
 		console.log("Application"+ $scope.personalInfo);
 		if ($scope.captchaValid === false){
-			$scope.validateCaptcha();
-			
+			$scope.validateCaptcha($scope.userInfoForm);
+
 		}
 
 		$scope.personalInfo.dob=$scope.dt;
@@ -421,7 +449,21 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 	}
 	//Next of personal info
 
+	$scope.payNow = function() {
 
+		if ($scope.paymentForm.$invalid) { 
+
+			$scope.isCardName = $scope.paymentForm.card_holder_name.$error.required;
+			$scope.isCardNumber = $scope.paymentForm.cardNumber.$error.required;
+			$scope.isExp_month = $scope.paymentForm.expiry_month.$error.required;
+			$scope.isExp_year = $scope.paymentForm.expiry_year.$error.required;
+			$scope.isCvv = $scope.paymentForm.cvv.$error.required;
+
+
+		}else{
+			console.log("Card details Valid")
+		}
+	}
 
 	$scope.personalInfoNext = function() {
 		$scope.saveOnly(1);
@@ -666,7 +708,34 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 
 	}
 
-	
+	$scope.proceedCardPay= function() {
+		var personalInfo = $rootScope.application.personalInfo;
+		$('#main').block();
+		regService.createCardToken(personalInfo)
+		.then(
+				function(data){
+					console.log('Data saved while creating User.'+ data);
+					$('#main').unblock();
+					var params = data.merchant.response.param;
+					var payUrl= data.merchant.response.url +"?";
+					for (var index = 0 ;index < params.length ; index ++ ){
+						if (index >0){
+							payUrl = payUrl + "&" +params[index].name +"="+params[index].content;
+						}else{
+							payUrl = payUrl +params[index].name +"="+params[index].content;
+						}	
+					}
+					window.location= payUrl;
+				} ,
+				function(errResponse){
+					$('#main').unblock();
+					console.error('Error while creating User.');
+				}	
+		);
+
+
+	}
+
 
 	$scope.srcInfoType= [  "News Paper",  "Internet Search", "Institute Website", "Email" ,"SMS" ,"Social Media","College Seminar", "Current Student" , "Adani Employee" , "Institute Alumni", "Faculty", "Friend","Relative" , "Education Portal" , "Other" ];
 
@@ -686,7 +755,6 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		}
 	}
 
-
 }]);
 
 
@@ -702,9 +770,9 @@ $.urlParam = function(name, url) {
 }
 
 function vcRecaptchaApiLoaded(){
-	
+
 	$('#main').unblock();
-	
+
 }
 
 

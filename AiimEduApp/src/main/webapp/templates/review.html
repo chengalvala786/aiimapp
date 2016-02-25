@@ -447,7 +447,7 @@
 
 					<td>{{empDetails.cmpName}} &nbsp;
 						{{empDetails.cmpAd1}} &nbsp;
-						{{empDetails.cmpAd1}}
+						{{empDetails.cmpAd2}}&nbsp;
 						{{empDetails.cmpCity}} &nbsp;
 						{{empDetails.cmpState}}</td>
 					<td>{{empDetails.designation}}</td>
@@ -551,10 +551,10 @@
 
 		</table>
 		<div class="flow_buttons no-print">
-			<a href="#additionalInfo" class="btn btn-primary btn-lg active"
+			<a href="#additionalInfo" class="btn btn-primary btn-lg active" ng-disabled="canSubmit==false"
 				role="button">Previous</a> <a onClick="window.print();return false"
 				class="btn btn-primary btn-lg active" role="button">Print this
-				page</a> <a ng-click="save('review')"
+				page</a> <a ng-click="save('review')" ng-disabled="canSubmit==false"
 				class="btn btn-primary btn-lg active" role="button">Submit</a>
 
 		</div>

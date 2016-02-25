@@ -14,13 +14,32 @@ import java.util.Date;
 public class Tbltemp implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	 public Tbltemp(String regno,String firstName,String middleName,String lastName,String email, Date dateOfBirth,String sex,String totExp,Date dtCheck,String terms , int pageNo,String state,String phoneMobile,String tran_id) {
+		this.regno=regno;
+		
+		this.firstName=firstName;
+		this.middleName=middleName;
+		this.lastName=lastName;
+		this.email=email;
+		this.dateOfBirth=dateOfBirth;
+		this.sex=sex;
+		this.totExp=totExp;
+		this.dtCheck=dtCheck;
+		this.pageNo=pageNo;
+		this.state=state;
+		this.phoneMobile=phoneMobile;
+		this.tran_id=tran_id;
+		this.terms =terms;	
+	}
+
+	
 	
 	@Id
 	private int id;
 
 	@Column(name="add_info")
 	private String addInfo;
-
+	
 	@Column(name="addr_emp_1")
 	private String addrEmp1;
 
@@ -1190,9 +1209,18 @@ public class Tbltemp implements Serializable {
 	private String pecentile;
 	@Column(name="tran_id")
 	private String tran_id;
+	@Column(name="secure_hash")
+	private String sHash;
+	
+	
+	public String getsHash() {
+		return sHash;
+	}
 
-	
-	
+	public void setsHash(String sHash) {
+		this.sHash = sHash;
+	}
+
 	public String getTran_id() {
 		return tran_id;
 	}

@@ -100,4 +100,7 @@ div.upload input {
  .cvv{
     width: 10em!important;
 }
+ .cardText{
+    width: 400px!important;
+}
     

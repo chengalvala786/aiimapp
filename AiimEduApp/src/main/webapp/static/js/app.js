@@ -1,7 +1,7 @@
 'use strict';
 
 
-var App = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'base64', 'rorymadden.date-dropdowns' , 'ui.grid', 'vcRecaptcha' ,'credit-cards' ]).
+var App = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'base64', 'rorymadden.date-dropdowns' , 'ui.grid', 'vcRecaptcha','creditCardInput', 'ui.grid.selection', 'ui.grid.exporter' ]).
 config(['$routeProvider', function($routeProvider) {
 	
 	
@@ -11,49 +11,52 @@ config(['$routeProvider', function($routeProvider) {
 
 	// route for the about page
 	.when('/personalInfo', {
-		templateUrl : 'templates/personal_info.html?id=v15',
+		templateUrl : 'templates/personal_info.html?id=v20',
 		controller  : 'UserController'
 	})
 	.when('/', {
-		templateUrl : 'templates/login.html?id=v15',
+		templateUrl : 'templates/login.html?id=v20',
 		controller  : 'UserController'
 	})
 	.when('/eductionInfo', {
-		templateUrl : 'templates/eduction_info.html?id=v15',
+		templateUrl : 'templates/eduction_info.html?id=v20',
 		controller  : 'UserController'
 	}).when('/createUser', {
-		templateUrl : 'templates/user_register.html?id=v15',
+		templateUrl : 'templates/user_register.html?id=v20',
 		controller  : 'UserController'
 	})
 	// route for the about page
 	.when('/workInfo', {
-		templateUrl : 'templates/work_info.html?id=v15',
+		templateUrl : 'templates/work_info.html?id=v20',
 		controller  : 'UserController'
 	})// route for the about page
 	.when('/additionalInfo', {
-		templateUrl : 'templates/additional_info.html?id=v15',
+		templateUrl : 'templates/additional_info.html?id=v20',
 		controller  : 'UserController'
 	}).when('/review', {
-		templateUrl : 'templates/review.html?id=v15',
+		templateUrl : 'templates/review.html?id=v20',
 		controller  : 'UserController'
 	}).when('/resultpage', {
-		templateUrl : 'templates/resultpage.html?id=v15',
+		templateUrl : 'templates/resultpage.html?id=v20',
 		controller  : 'UserController'
 	}).when('/adminMain', {
-		templateUrl : 'templates/admin_main.html?id=v15',
+		templateUrl : 'templates/admin_main.html?id=v20',
 		controller  : 'AdminController'
 	}).when('/regUsers', {
-		templateUrl : 'templates/admin_reguser.html?id=v15',
+		templateUrl : 'templates/admin_reguser.html?id=v20',
 		controller  : 'RegController'
 	}).when('/completedApps', {
-		templateUrl : 'templates/admin_completedapps.html?id=v15',
+		templateUrl : 'templates/admin_completedapps.html?id=v20',
 		controller  : 'AppCmplController'
 	}).when('/cardInfo', {
-		templateUrl : 'templates/creditcard.html?id=v15',
-		controller  : 'AppCmplController'
+		templateUrl : 'templates/creditcard.html?id=v20',
+		controller  : 'UserController'
 	}).when('/incompleteApps', {
-		templateUrl : 'templates/admin_incompleteapps.html?id=v15',
+		templateUrl : 'templates/admin_incompleteapps.html?id=v20',
 		controller  : 'AdminController'
+	}).when('/pswd', {
+		templateUrl : 'templates/forgotpassword.htm?id=v20',
+		controller  : 'UserController'
 	});
 	
 	
@@ -113,22 +116,23 @@ App.controller('loginCntrl', function($scope) {
 
 
 App.run(function($templateCache ,$http) {
-	  $http.get('templates/personal_info.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/eduction_info.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/work_info.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/user_register.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/additional_info.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/review.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/resultpage.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/admin_main.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/admin_reguser.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/admin_completedapps.html?id=v15', {cache:$templateCache});
-	  $http.get('templates/admin_incompleteapps.html?id=v15', {cache:$templateCache});
+	  $http.get('templates/personal_info.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/eduction_info.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/work_info.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/user_register.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/additional_info.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/review.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/resultpage.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/admin_main.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/admin_reguser.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/admin_completedapps.html?id=v20', {cache:$templateCache});
+	  $http.get('templates/admin_incompleteapps.html?id=v20', {cache:$templateCache});
 	  $http.get('templates/companydetails_tmp.htm', {cache:$templateCache});
 	  $http.get('templates/profqual_tmp.htm', {cache:$templateCache});
 	  $http.get('templates/graduate_tmp.htm', {cache:$templateCache});
 	  $http.get('templates/postgrad_tmp.htm', {cache:$templateCache});
-	  
+	  $http.get('templates/forgotpassword.htm?id=v20', {cache:$templateCache});
+		  
 	  
 	  
 		});

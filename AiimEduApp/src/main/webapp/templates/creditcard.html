@@ -1,17 +1,22 @@
 <div class="container">
-  <form class="form-horizontal"  name="paymentForm" role="form">
-    <fieldset>
+  <form class="form-horizontal"  name="paymentForm" role="form" ng-app novalidate>
+      <fieldset>
       <legend>Credit Payment Information</legend>
       <div class="form-group">
         <label class="col-sm-3 control-label required" for="card-holder-name">Name on Card</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" name="card-holder-name" id="card-holder-name"   placeholder="Card Holder's Name">
+          <input type="text" maxlength="50" class="form-control cardText" required  ng-pattern="/^[a-zA-Z ]*$/" name="card_holder_name"  ng-model="card.name" id="card-holder-name"   placeholder="Card Holder's Name">
+          <span class="field-error" ng-show="isCardName">This is a required field.</span>
+          <span class="field-error" ng-show="paymentForm.card_holder_name.$error.pattern">Card Holder's Name cannot contain numbers or special characters.</span>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-3 control-label required"  for="card-number">Card Number</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" name="cardNumber" id="card-number"  ng-model="card.number" cc-number cc-type="cardType"  placeholder="Debit/Credit Card Number">
+          <input type="credit card"  class="form-control cardText" required name="cardNumber" id="card-number"  ng-pattern="/^\d+$/" ng-model="card.number" cc-number cc-type="cardType"  placeholder="Debit/Credit Card Number">
+              <span class="field-error" ng-show="isCardNumber">This is a required field.</span>
+              <span class="field-error" ng-show="paymentForm.cardNumber.$error.pattern">Card Number should be in numeric.</span>
+    
          </div>
       </div>
       <div class="form-group">
@@ -19,7 +24,7 @@
         <div class="col-sm-9">
           <div class="row">
             <div class="col-xs-3">
-              <select class="form-control col-sm-2" ng-model="card.exp_month" cc-exp-month name="expiry-month" id="expiry-month">
+              <select class="form-control col-sm-2" ng-model="card.exp_month" required cc-exp-month name="expiry_month" id="expiry_month">
                 <option>Month</option>
                 <option value="01">Jan (01)</option>
                 <option value="02">Feb (02)</option>
@@ -34,9 +39,10 @@
                 <option value="11">Nov (11)</option>
                 <option value="12">Dec (12)</option>
               </select>
+               <span class="field-error" ng-show="isExp_month">This is a required field.</span>
             </div>
             <div class="col-xs-3">
-              <select class="form-control required"  ng-model="card.exp_year" cc-exp-year name="expiry-year">
+              <select class="form-control required"  ng-model="card.exp_year" required name="expiry_year">
                 <option value="16">2016</option>
                 <option value="17">2017</option>
                 <option value="18">2018</option>
@@ -54,6 +60,7 @@
                 <option value="23">2030</option>
                 
              </select>
+             <span class="field-error" ng-show="isExp_year">This is a required field.</span>
             </div>
           </div>
         </div>
@@ -61,14 +68,14 @@
       <div class="form-group">
         <label class="col-sm-3 control-label required" for="cvv">Card CVV</label>
         <div class="col-sm-3">
-          <input type="text" class="form-control cvv" name="cvv" id="cvv"  ng-model="card.cvc" cc-cvc  placeholder="Security Code">
-               <p ng-show="paymentForm.cvv.$error.pattern">That's not a valid CVV </p>
+          <input type="cvc" class="form-control cvv" name="cvv" id="cvv" required ng-model="card.cvc" cc-cvc  placeholder="Security Code">
+           <span class="field-error" ng-show="isCvv">This is a required field.</span>   
     
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="button" class="btn btn-success">Pay Now</button>
+          <button type="button" class="btn btn-success"  ng-click="payNow()" >Pay Now</button>
         </div>
       </div>
     </fieldset>

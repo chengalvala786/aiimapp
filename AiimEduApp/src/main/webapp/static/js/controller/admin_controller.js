@@ -3,7 +3,7 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 	$scope.myData=[];
 	$scope.startDt="";
 	$scope.endDt="";
-	
+
 	$scope.today = function() {
 		$scope.dt = new Date();
 	};	
@@ -50,11 +50,12 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 			message: '<h1>Processing</h1>', 
 			css: { border: '3px solid #a00' } 
 		}); 
-		
+
 		$.ajax({
 			url: 'listCompltedApps',
 			dataType: 'text',
 			contentType: false,
+
 			type: 'GET',
 			data: { status:$scope.status ,  emailId : $scope.emailId  ,starDate: $scope.startDt , endDate:$scope.endDt},
 			success: function(data){
@@ -64,56 +65,146 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 				$scope.myData=JSON.parse(data);
 
 				if (!$scope.$$phase) {
-		            $scope.$apply();
-		        }
+					$scope.$apply();
+				}
 
 			}
 		});
 
 	};
-	
+
 
 
 	$scope.viewApp = function (row){
-	
-		console.log(row.entity);
+
+		$scope.status =null;
+		$scope.startDt=null;
+		$scope.endDt=null;
+		$scope.emailId =row.entity.personalInfo.emailId;
+		$('#main').block({ 
+			message: '<h1>Processing</h1>', 
+			css: { border: '3px solid #a00' } 
+		}); 
 		
-		$rootScope.application =row.entity;
+		$.ajax({
+			url: 'listCompltedApps',
+			dataType: 'text',
+			contentType: false,
+			//async: false, //blocks window close 
+			type: 'GET',
+			data: { status:$scope.status ,  emailId : $scope.emailId  ,starDate: $scope.startDt , endDate:$scope.endDt},
+			success: function(data){
+				//  $('#result').html(data+ " uploaded by FormData!");
+				console.log("Result # "+ JSON.parse(data));
 				
+				$('#main').unblock();
+				var respObj = JSON.parse(data)
+				$rootScope.application =respObj[0];
+				$location.path("/review");
+
+				if (!$scope.$$phase) {
+		            $scope.$apply();
+		        }
+
+			}
+		});
 		
+	
+		//$rootScope.application =row.entity;
+			
+
+
 
 	};
 
 
 
 	$scope.gridOptions = {
-						 enableSorting: true,
-			             showFooter: true,
-			             columnDefs: [
-							            { name:'Reg No.', field: 'personalInfo.regno'  ,  width: 100,  cellTemplate:'<div class="grid-action-cell"><a href="#review"ng-click="grid.appScope.viewApp(row)">{{COL_FIELD}}</a></div>'},
-							             { name:'First Name', field: 'personalInfo.fName' ,  width: 100 },
-							             { name:'Middle Name', field: 'personalInfo.mName',  width: 100 },
-							             { name:'Last Name', field: 'personalInfo.lName',  width: 100  },
-							             { name:'Email', field: 'personalInfo.emailId' ,  width: 200 },
-							             { name:'Age', field: 'personalInfo.dob',  width: 50, cellFilter :'ageFilter'},
-							             { name:'Sex', field: 'personalInfo.gender' ,  width: 50 },
-							             { name:'Total experience', field: 'workInfo.total_wexp' ,  width: 50 },
-							             { name:'Accept Date', field: 'acceptedDate' ,  width: 100 , cellFilter: "date:'dd-MM-yyyy'"},
-							             { name:'Completed', field: 'additionalInfo.decleration' ,  width: 50,cellFilter :'appstatus' },
-							             { name:'State', field: 'personalInfo.state' ,  width: 100 },
-							             { name:'Mobile', field: 'personalInfo.mobileNumber' ,  width: 100 },
-							             { name:'Page', field: 'pageNo' ,  width: 50 },
-							             { name:'Transaction Id', field: 'tranId' ,  width: 100 },    
-							             
-							             ],
-							             sortInfo: {
-							            	 fields: ['dt_created'],
-							            	 directions: ['dsc']
-							             },
+			enableSorting: true,
+			showFooter: true,
+			showGroupPanel: true,
+
+			columnDefs: [
+			             { name:'Reg No.', field: 'personalInfo.regno'  ,  width: 100,  cellTemplate:'<div class="grid-action-cell"><a href="" ng-click="grid.appScope.viewApp(row)">{{COL_FIELD}}</a></div>'},
+			             { name:'First Name', field: 'personalInfo.fName' ,  width: 100 },
+			             { name:'Middle Name', field: 'personalInfo.mName',  width: 100 },
+			             { name:'Last Name', field: 'personalInfo.lName',  width: 100  },
+			             { name:'Email', field: 'personalInfo.emailId' ,  width: 200 },
+			             { name:'Age', field: 'personalInfo.dob',  width: 50, cellFilter :'ageFilter'},
+			             { name:'Sex', field: 'personalInfo.gender' ,  width: 50 },
+			             { name:'Total experience', field: 'workInfo.total_wexp' ,  width: 50 },
+			             { name:'Accept Date', field: 'acceptedDate' ,  width: 100 , cellFilter: "date:'dd-MM-yyyy'"},
+			             { name:'Completed', field: 'additionalInfo.decleration' ,  width: 50,cellFilter :'appstatus' },
+			             { name:'State', field: 'personalInfo.state' ,  width: 100 },
+			             { name:'Mobile', field: 'personalInfo.mobileNumber' ,  width: 100 },
+			             { name:'Page', field: 'pageNo' ,  width: 50 },
+			             { name:'Transaction Id', field: 'tranId' ,  width: 100 },    
+
+			             ],
+
+			             sortInfo: {
+			            	 fields: ['dt_created'],
+			            	 directions: ['dsc']
+			             },
+
+			             enableGridMenu: true,
+			             enableSelectAll: true,
+			             exporterCsvFilename: 'Application.csv',
+			             exporterPdfDefaultStyle: {fontSize: 9},
+			             exporterPdfTableStyle: {margin: [30, 30, 30, 30]},
+			             exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
+			             exporterPdfHeader: { text: "My Header", style: 'headerStyle' },
+			             exporterPdfFooter: function ( currentPage, pageCount ) {
+			            	 return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
+			             },
+			             exporterPdfCustomFormatter: function ( docDefinition ) {
+			            	 docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
+			            	 docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
+			            	 return docDefinition;
+			             },
+
+			             exporterFieldCallback: function( grid, row, col, input ) {
+			            	 if( col.name == 'Age' ) {
+			            		 var date = new Date(input);
+			            		 var ageDifMs = Date.now() - date.getTime();
+			            		 var ageDate = new Date(ageDifMs); // miliseconds from epoch
+			            		 return Math.abs(ageDate.getUTCFullYear() - 1970);	 
+
+			            	 }
+			            	 else if ( col.name == 'Completed'){
+			            		 if (input === '1'){
+			            				return 'A';
+			            			}else{
+			            				return '';
+			            			}
+			            		 
+			            	 }else  if ( col.name == 'Accept Date'){
+			            		 var date = new Date(input);
+			            		 var day = date.getDate();
+			            		 var monthIndex = date.getMonth();
+			            		 var year = date.getFullYear();
+			            		 return (day + '/' + monthIndex + '/' + year);
+			            		 
+			            	 }else{
+			            		 return input;
+			            	 }
+			            	 
+			            	 
+			            	 
+			            	 
+			             },
+
+			             exporterPdfOrientation: 'portrait',
+			             exporterPdfPageSize: 'LETTER',
+			             exporterPdfMaxGridWidth: 500,
+			             exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+			             onRegisterApi: function(gridApi){
+			            	 $scope.gridApi = gridApi;
+			             },
 			             data :'myData' 
 	};
 
-	
+
 
 }]);
 
@@ -126,14 +217,14 @@ App.controller('RegController', ['$scope', 'regService','UserService','$rootScop
 
 		$location.path("/" + $scope.selection);
 	};
-	
-					  
+
+
 	$scope.loadUsers = function (){
 		$('#main').block({ 
 			message: '<h1>Processing</h1>', 
 			css: { border: '3px solid #a00' } 
 		});
-		
+
 		$.ajax({
 			url: 'listAllUsers',
 			dataType: 'text',
@@ -146,8 +237,8 @@ App.controller('RegController', ['$scope', 'regService','UserService','$rootScop
 				$scope.myData=JSON.parse(data);
 
 				if (!$scope.$$phase) {
-		            $scope.$apply();
-		        }
+					$scope.$apply();
+				}
 
 			}
 		});
@@ -156,57 +247,57 @@ App.controller('RegController', ['$scope', 'regService','UserService','$rootScop
 
 
 
-	
-	
+
+
 	$scope.pagingOptions = {
 			pageSizes: [25, 50, 100],
 			pageSize: 25,
 			totalServerItems: 0,
 			currentPage: 1
 	};
-	 $scope.setPagingData = function(data, page, pageSize) {
-		    var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-		    $scope.myData = pagedData;
-		    $scope.pagingOptions.totalServerItems = data.length;
-		    if (!$scope.$$phase) {
-		      $scope.$apply();
-		    }
-		  };
+	$scope.setPagingData = function(data, page, pageSize) {
+		var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+		$scope.myData = pagedData;
+		$scope.pagingOptions.totalServerItems = data.length;
+		if (!$scope.$$phase) {
+			$scope.$apply();
+		}
+	};
 
-		  $scope.getPagedDataAsync = function(pageSize, page) {
-		    setTimeout(function() {      
-		        
-		          $scope.setPagingData($scope.myData, page, pageSize);
-		      
-		    }, 100);
-		  };
+	$scope.getPagedDataAsync = function(pageSize, page) {
+		setTimeout(function() {      
 
-		  $scope.$watch('pagingOptions', function() {
-		    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-		  }, true);
+			$scope.setPagingData($scope.myData, page, pageSize);
+
+		}, 100);
+	};
+
+	$scope.$watch('pagingOptions', function() {
+		$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+	}, true);
 
 
 	$scope.gridOptions = {
-						 enableSorting: true,
-			             enablePaging: true,	
-			             pagingOptions: $scope.pagingOptions,	
-			             showFooter: true,
-			             columnDefs: [
-							            { name:'Reg No.', field: 'regno'  ,  width: 100 },
-							             { name:'First Name', field: 'fName' ,  width: 100 },
-							             { name:'Middle Name', field: 'mName',  width: 100 },
-							             { name:'Last Name', field: 'lName',  width: 100  },
-							             { name:'Email', field: 'emailId' ,  width: 200 },
-							             { name:'Age', field: 'dob',  width: 100, cellFilter :'ageFilter'},
-							             { name:'Sex', field: 'gender' ,  width: 50 },
-							             { name:'Mobile', field: 'mobileNumber' ,  width: 100 },
-							             { name:'Activation', field: 'status' ,  width: 100 },
-							             { name:'Date Registered', field: 'dt_created' ,  width: 100 , cellFilter: "date:'dd-MM-yyyy'"}
-							             ],
-							             sortInfo: {
-							            	 fields: ['dt_created'],
-							            	 directions: ['dsc']
-							             },
+			enableSorting: true,
+			enablePaging: true,	
+			pagingOptions: $scope.pagingOptions,	
+			showFooter: true,
+			columnDefs: [
+			             { name:'Reg No.', field: 'regno'  ,  width: 100 },
+			             { name:'First Name', field: 'fName' ,  width: 100 },
+			             { name:'Middle Name', field: 'mName',  width: 100 },
+			             { name:'Last Name', field: 'lName',  width: 100  },
+			             { name:'Email', field: 'emailId' ,  width: 200 },
+			             { name:'Age', field: 'dob',  width: 100, cellFilter :'ageFilter'},
+			             { name:'Sex', field: 'gender' ,  width: 50 },
+			             { name:'Mobile', field: 'mobileNumber' ,  width: 100 },
+			             { name:'Activation', field: 'status' ,  width: 100 },
+			             { name:'Date Registered', field: 'dt_created' ,  width: 100 , cellFilter: "date:'dd-MM-yyyy'"}
+			             ],
+			             sortInfo: {
+			            	 fields: ['dt_created'],
+			            	 directions: ['dsc']
+			             },
 			             data :'myData' 
 	};
 
@@ -222,38 +313,38 @@ App.controller('AdminController', ['$scope', 'regService','UserService','$rootSc
 
 		$location.path("/" + $scope.selection);
 	};
-		  
-	
+
+
 
 }]);
 
 
 
 App.filter('ageFilter', function () {
-    function calculateAge (birthday) { // birthday is a date
-        var date = new Date(birthday);
-        var ageDifMs = Date.now() - date.getTime();
-        var ageDate = new Date(ageDifMs); // miliseconds from epoch
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
+	function calculateAge (birthday) { // birthday is a date
+		var date = new Date(birthday);
+		var ageDifMs = Date.now() - date.getTime();
+		var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	}
 
-    return function (birthdate) {
-        return calculateAge(birthdate);
-    };
+	return function (birthdate) {
+		return calculateAge(birthdate);
+	};
 });
 
 App.filter('appstatus', function () {
-    function setAppstat (status) { // birthday is a date
-       if (status === '1'){
-    	   return 'A';
-       }else{
-    	   return '';
-       }
-    	
-      
-    }
+	function setAppstat (status) { // birthday is a date
+		if (status === '1'){
+			return 'A';
+		}else{
+			return '';
+		}
 
-    return function (status) {
-        return setAppstat(status);
-    };
+
+	}
+
+	return function (status) {
+		return setAppstat(status);
+	};
 });

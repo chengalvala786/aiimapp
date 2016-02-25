@@ -20,7 +20,10 @@ public interface RegisterationService {
 	
 	String uploadImage(Application appl  , String imageType);
 	
+	Application retAppByHash(String hashKey);
+	
 	PersonalInfo retriveImage(String emailId, String rowId , String imageType );
+	
 	List<Application> retAllCmplApps(String status , String emailId, String startDate, String endDate);
 	
 	

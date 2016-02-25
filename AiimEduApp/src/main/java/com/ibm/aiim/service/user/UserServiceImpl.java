@@ -36,38 +36,38 @@ public class UserServiceImpl implements UserService{
 
 	public List<PersonalInfo> findAllUsers() {
 		// TODO Auto-generated method stub
-		
+
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "AiimDB" );
 		EntityManager entitymanager = emfactory.createEntityManager( );
 		entitymanager.getTransaction( ).begin( );
-	
+
 		List<PersonalInfo> users = new ArrayList<PersonalInfo>();
 		PersonalInfo user =null;
 		Query query = entitymanager.createQuery("SELECT c FROM Tbluser c" );
 		List<Tbluser> results = query.getResultList();
-	
-		
+
+
 		if (results!=null && results.size()>0){
 			for (Tbluser userObj : results){
 				user = new PersonalInfo();
-				
-				
-						if (userObj.getFirstName()!=null){
-								user.setFName(userObj.getFirstName());
-								user.setLName(userObj.getLastName());
-								user.setMName(userObj.getMiddleName());
-								user.setEmailId(userObj.getEmail());
-								user.setRegno(userObj.getRegno());
-								user.setGender(userObj.getSex());
-								user.setMobileNumber(userObj.getMobileNo());
-								user.setDob(DateUtil.formatToUIDate(userObj.getDateOfBirth()));
-								user.setStatus(userObj.getStatus());
-								user.setDt_created(DateUtil.formatToUIDate(userObj.getDtCreated()));
-						users.add(user);
-						
-						
-						}
-						
+
+
+				if (userObj.getFirstName()!=null){
+					user.setFName(userObj.getFirstName());
+					user.setLName(userObj.getLastName());
+					user.setMName(userObj.getMiddleName());
+					user.setEmailId(userObj.getEmail());
+					user.setRegno(userObj.getRegno());
+					user.setGender(userObj.getSex());
+					user.setMobileNumber(userObj.getMobileNo());
+					user.setDob(DateUtil.formatToUIDate(userObj.getDateOfBirth()));
+					user.setStatus(userObj.getStatus());
+					user.setDt_created(DateUtil.formatToUIDate(userObj.getDtCreated()));
+					users.add(user);
+
+
+				}
+
 			}
 		}
 		entitymanager.getTransaction( ).commit( );
@@ -75,10 +75,32 @@ public class UserServiceImpl implements UserService{
 		emfactory.close( );
 		return users;
 	}
-	
 
-	public PersonalInfo findByEmailId(String emailId) {
-		return null;
+
+	public boolean resetRequest(PersonalInfo user) {
+		String id = user.getEmailId();
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "AiimDB" );
+		EntityManager entitymanager = emfactory.createEntityManager( );
+		EntityTransaction updateTransaction = entitymanager.getTransaction();
+		updateTransaction.begin();
+		Query query = entitymanager.createQuery("SELECT c FROM Tbluser c  WHERE  c.email ='" +user.getEmailId()+"' "  );
+		String password ="";
+		List<Tbluser> results = query.getResultList();
+		if (results!=null && results.size()>0){
+			for (Tbluser userObj : results){
+				password =userObj.getPasswd();
+				break;
+			}
+		}		
+		
+		
+
+		updateTransaction.commit();
+		entitymanager.close( );
+		emfactory.close( );
+		
+		MailService.sendPswdMail(user, password);
+		return true;
 
 	}
 
@@ -104,7 +126,7 @@ public class UserServiceImpl implements UserService{
 		updateTransaction.commit();
 		entitymanager.close( );
 		emfactory.close( );
-			return true;
+		return true;
 	}
 
 	public String saveUser(PersonalInfo user) {
@@ -129,8 +151,8 @@ public class UserServiceImpl implements UserService{
 				regNo = userObj;
 				int regInt = Integer.parseInt(regNo);
 				newRegNo= regInt+1;
-				
-				
+
+
 				userTable.setRegno(String.valueOf(newRegNo));		
 			}
 
@@ -147,15 +169,15 @@ public class UserServiceImpl implements UserService{
 		userTable.setDateOfBirth(DateUtil.formatToDBDate(user.getDob()));
 		userTable.setCycleYear("2016-17");
 		userTable.setPasswd(user.getPassword());
-		
+
 		//logging an application Application Table
 		RegisterationImpl regService = new RegisterationImpl();
 		Application appl = new Application();
-		
-		
+
+
 		user.setRegno(String.valueOf(newRegNo));
 		appl.setPersonalInfo(user);
-		
+
 		boolean create = true;
 		String rowId = regService.saveApplication(appl ,create );
 		userTable.setApp_rw_id(rowId);
@@ -193,26 +215,26 @@ public class UserServiceImpl implements UserService{
 					return appl;
 				}
 				if (userObj.getApp_rw_id()!=null && !userObj.getApp_rw_id().equals("NULL")){
-				
-				 query = entitymanager.createQuery("SELECT c FROM Tbltemp c  WHERE  c.email ='" +user.getEmailId()+"' "+ "AND c.id = " + Integer.parseInt(userObj.getApp_rw_id())  );
+
+					query = entitymanager.createQuery("SELECT c FROM Tbltemp c  WHERE  c.email ='" +user.getEmailId()+"' "+ "AND c.id = " + Integer.parseInt(userObj.getApp_rw_id())  );
 				}else{
-					
-				 query = entitymanager.createQuery("SELECT c FROM Tbltemp c  WHERE  c.email ='" +user.getEmailId()+"' "  );
-							
+
+					query = entitymanager.createQuery("SELECT c FROM Tbltemp c  WHERE  c.email ='" +user.getEmailId()+"' "  );
+
 				}
-				 
-				 List<Tbltemp> resultsApp = query.getResultList();
-						
-				 if (resultsApp!=null && resultsApp.size()>0){
-					 Tbltemp applTable = 	 resultsApp.get(0);
+
+				List<Tbltemp> resultsApp = query.getResultList();
+
+				if (resultsApp!=null && resultsApp.size()>0){
+					Tbltemp applTable = 	 resultsApp.get(0);
 					RegisterationImpl  regService = new RegisterationImpl();
 					appl = new Application();
 					String rowId = userObj.getApp_rw_id();
 					appl.setApp_rw_id(rowId);
 					regService.retriveApplication(appl, applTable);
-					}
-				
 				}
+
+			}
 		}
 		entitymanager.getTransaction( ).commit( );
 		entitymanager.close( );
@@ -220,5 +242,11 @@ public class UserServiceImpl implements UserService{
 		return appl;
 
 
+	}
+
+
+	public PersonalInfo findByEmailId(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -76,13 +76,13 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 <link href="<c:url value='/static/css/ui-grid.css' />" rel="stylesheet"></link>
 
 
-<link href="<c:url value='/static/css/style.css?id=v15' />" rel="stylesheet"></link>
+<link href="<c:url value='/static/css/style.css?id=v20' />" rel="stylesheet"></link>
 
-<link href="<c:url value='/static/css/app.css?id=v15' />"
+<link href="<c:url value='/static/css/app.css?id=v20' />"
 	rel="stylesheet"></link>
 <link href="<c:url value='/static/css/angular-material.min.css' />"
 	rel="stylesheet"></link>
-<link href="<c:url value='/static/css/print.css?id=v15'  />"
+<link href="<c:url value='/static/css/print.css?id=v20'  />"
 	rel="stylesheet" type="text/css" media="print"></link>
 
 </head>
@@ -133,26 +133,35 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 	<script src="<c:url value='/static/js/angular-animate.js' />"></script>
 	<script src="<c:url value='/static/js/ui-bootstrap-tpls-0.14.3.js' />"></script>
 	<script src="<c:url value='/static/js/angular-animate.js' />"></script>
-	<script src="<c:url value='/static/js/app.js?id=v15' />"></script>
+	<script src="<c:url value='/static/js/app.js?id=v20' />"></script>
 	<script src="<c:url value='/static/js/directive.js' />"></script>
 	<script src="<c:url value='/static/js/jquery.blockUI.js' />"></script>
 	<script src="<c:url value='/static/js/ui-grid.js' />"></script>
 	<script
-		src="<c:url value='/static/js/service/user_service.js?id=v15' />"></script>
+		src="<c:url value='/static/js/service/user_service.js?id=v20' />"></script>
 	<script
-		src="<c:url value='/static/js/service/register_service.js?id=v15' />"></script>
+		src="<c:url value='/static/js/service/register_service.js?id=v20' />"></script>
 	<script
-		src="<c:url value='/static/js/controller/user_controller.js?id=v15' />"></script>
+		src="<c:url value='/static/js/controller/user_controller.js?id=v20' />"></script>
 	<script src="<c:url value='/static/js/ng-file-upload.min.js' />"></script>
 	<script src="<c:url value='/static/js/ng-file-upload-shim.js' />"></script>
 	<script src="<c:url value='/static/js/angular-base64.min.js' />"></script>
 	<script
-		src="<c:url value='/static/js/controller/admin_controller.js?id=v15' />"></script>
+		src="<c:url value='/static/js/controller/admin_controller.js?id=v20' />"></script>
 	<script src="<c:url value='/static/js/ui-bootstrap-tpls-0.14.3.js' />"></script>
 
 	<script src="<c:url value='/static/js/angular-recaptcha.js' />"></script>
-	<script src="<c:url value='/static/js/angular-credit-cards.js' />"></script>
 	
+	<script src="<c:url value='/static/js/angular_card_input.js' />"></script>
+	
+	 <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+
+    
+    
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.13.0/css/semantic.css" rel="stylesheet" type="text/css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
 	
 	
 

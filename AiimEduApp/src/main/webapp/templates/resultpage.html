@@ -1,28 +1,36 @@
 
 <section class="container-fluid">
 
-	<div   class="container">
+	<div class="container">
 
-		<form name="resultPage"   ng-app novalidate>
+		<form name="resultPage" ng-app novalidate>
 
 
-			
+
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-12">
-				
-
-					</div>
+					<div class="col-xs-12"></div>
 
 
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-12">
-				
+					<div class="col-xs-12"></div>
 
-					</div>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12"></div>
+
+
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12"></div>
 
 
 				</div>
@@ -30,98 +38,84 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-12">
-					
 
-					</div>
+						<div class="alert alert-success">
+							<strong>Thank you for Applying for PGDM (Infrastructure
+								Management). Please proceed to payment to complete the
+								application. </strong>
 
-
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-xs-12">
-			
-
-					</div>
-
-
-				</div>
-			</div>
-				<div class="form-group">
-				<div class="row">
-					<div class="col-xs-12">
-					
-								<div  class="alert alert-success">
-									<strong>Thank you for Applying for PGDM (Infrastructure Management). Please proceed to payment to complete the application.
-								</strong>
-								
-								</div>
-						
-					
-
-					</div>
-
-
-				</div>
-			</div>
-				<div class="form-group">
-				<div class="row">
-				<div class="col-xs-12">
-			
-					<div ng-if="status=='Ok'">
-							<div  class="alert alert-success">
-										<strong>Your Transaction is successful. Your Transaction ID is {{transactionId}}.
-								</strong>
-								</div>
-					</div>
-					<div ng-if="status=='F'">
-							<div  class="alert alert-danger">
-										<strong>Your Payment Transaction failed. Please try again.
-								</strong>
-								</div>
-					</div>
-				</div>
-				</div>
-			</div>
-			</div>
-				<div class="form-group">
-				<div class="row">
-					<div class="col-xs-12">
-						<!-- <div ng-if="" class="alert alert-success">
-							<strong>Your Application has been submitted successfully</strong>
-						</div> -->
-
-					</div>
-
-
-				</div>
-			</div>
-			
-				<div class="form-group">
-				<div class="row">
-					<div class="col-xs-4">
-						<!-- <div ng-if="" class="alert alert-success">
-							<strong>Your Application has been submitted successfully</strong>
-						</div> -->
-
-					</div>
-					
-						<div ng-hide="status=='Ok'"class="col-xs-2">
-						<a ng-click="proceedPay()" class="btn btn-primary btn-lg active" role="button">Proceed to Payment</a> 
-	
 						</div>
-				
-					<div class="col-xs-4">
-				
+
+
 
 					</div>
-					
+
 
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12">
+
+						<div ng-if="status=='Ok'">
+							<div class="alert alert-success">
+								<strong>Your Transaction is successful. Your
+									Transaction ID is {{transactionId}}. </strong>
+							</div>
+						</div>
+						<div ng-if="status=='F'">
+							<div class="alert alert-danger">
+								<strong>Your Payment Transaction failed. Please try
+									again. </strong>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- <div ng-if="" class="alert alert-success">
+							<strong>Your Application has been submitted successfully</strong>
+						</div> -->
+
+			</div>
 
 
-		</form>
+		</div>
+	</div>
+
+	<div class="form-group">
+
+		<div class="row">
+		
+			<div class="col-xs-4">
+				<!-- <div ng-if="" class="alert alert-success">
+							<strong>Your Application has been submitted successfully</strong>
+						</div> -->
+
+			</div>
+			
+				<div ng-hide="status=='Ok'" class="col-xs-2">
+				
+					<a ng-click="proceedPay()" class="btn btn-primary btn-lg active"
+						role="button">Pay by NetBanking</a>
+				
+				</div>
+			
+				<div ng-hide="status=='Ok'" class="col-xs-4">
+				<a ng-click="proceedCardPay()" class="btn btn-primary btn-lg active"
+						role="button">Pay by Credit/Debit Card</a>
+				
+				</div>
+			
+			
+		</div>
+	</div>
+
+
+	</form>
 
 
 	</div>

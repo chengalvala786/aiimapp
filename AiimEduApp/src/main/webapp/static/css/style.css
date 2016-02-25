@@ -201,6 +201,10 @@ nav h2 {
 	padding:10px;
 	}
 	
+	.logForm{
+	padding:0px !important;
+    }
+	
 	.dobwidth{
 	   width:75%;
    }
@@ -322,3 +326,45 @@ div.upload input {
 .table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td{
     padding: 1px !important;
 }
+
+.boxbeauty{
+	border:#dcd7d7 solid 1px;
+	background-color:#f6f6f6;
+	margin-top:60px;
+	margin-bottom:40px;
+	}
+	
+.img-circle{
+	background-color:#bcbcbc;
+	padding:8px;
+	font-size:14px;
+	color:#ffffff;
+}
+
+.lgmargin{
+	 
+	margin-top:40px;
+	margin-bottom:40px;
+}
+
+.btn-warning{
+	background-color:#fdb813 !important;
+	background-image: -webkit-linear-gradient(top,#fdb813 0,#fdb813 100%);
+    background-image: -o-linear-gradient(top,#fdb813 0,#fdb813 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fdb813),to(#fdb813));
+    background-image: linear-gradient(to bottom,#fdb813 0,#fdb813 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdb813', endColorstr='#fffdb813', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #e38d13;
+	-webkit-box-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.btn{
+	border-radius: 0px;
+}
+
+
+
+ 

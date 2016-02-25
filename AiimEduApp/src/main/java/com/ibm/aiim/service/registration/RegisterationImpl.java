@@ -74,7 +74,57 @@ public class RegisterationImpl implements RegisterationService{
 
 		return true;
 	}
+	public static boolean storeSecuredHash(PersonalInfo user , String hashKey){
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "AiimDB" );
+		EntityManager entitymanager = emfactory.createEntityManager( );
+		EntityTransaction updateTransaction = entitymanager.getTransaction();
+		updateTransaction.begin();
+		Query query = entitymanager.createQuery("UPDATE Tbltemp apdb SET apdb.sHash = '"+hashKey 
+
+				+ "' WHERE apdb.email= :id");
+		
+		String id= user.getEmailId();
+		query.setParameter("id", id);
+		int updateCount = query.executeUpdate();
+		if (updateCount > 0) {
+			System.out.println("Hashcode saved for the user.."+ id );
+		}
+		updateTransaction.commit();
+		entitymanager.close( );
+		emfactory.close( );
+		return true;
+	}
 	
+	public Application retAppByHash(String hashKey) {
+		// TODO Auto-generated method stub
+		Application appl = null;
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "AiimDB" );
+		EntityManager entitymanager = emfactory.createEntityManager( );
+		entitymanager.getTransaction( ).begin( );
+		Query query =null;
+		String format ="EEE MMM dd yyyy HH:mm:ss";
+		 if(hashKey!=null){
+				String sqlQuery ="SELECT c FROM Tbltemp c  WHERE  c.sHash ='" +hashKey+"' "  ;
+				query = entitymanager.createQuery(sqlQuery);
+				
+			}
+		RegisterationImpl  regService = new RegisterationImpl();			
+		List<Application> appls =  new ArrayList<Application>();		
+				 List<Tbltemp> resultsApp = query.getResultList();
+				 if (resultsApp!=null && resultsApp.size()>0){
+					for (Tbltemp applTable : resultsApp){ 
+					appl = new Application();
+					regService.retriveApplication(appl, applTable);
+					
+					}
+				 }
+		entitymanager.getTransaction( ).commit( );
+		entitymanager.close( );
+		emfactory.close( );
+		return appl;
+
+
+	}
 	
 	public List<Application> retAllCmplApps(String status , String emailId , String startDate, String endDate) {
 		// TODO Auto-generated method stub
@@ -84,26 +134,44 @@ public class RegisterationImpl implements RegisterationService{
 		entitymanager.getTransaction( ).begin( );
 		Query query =null;
 		String format ="EEE MMM dd yyyy HH:mm:ss";
-
-		if (status!=null){
+		 if 
+			(emailId!=null){
+				String sqlQuery ="SELECT c FROM Tbltemp c  WHERE  c.email ='" +emailId+"' "  ;
+				query = entitymanager.createQuery(sqlQuery);
+				
+			}
+		 else if (status!=null){
 			SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
 			try{
 			Date stDate = sdf.parse(startDate);
 			Date  enDate= sdf.parse(endDate);
 			Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String sqlQuery ="SELECT c FROM Tbltemp c  WHERE  c.terms ='" +status+"' AND  c.dtCheck  BETWEEN  '"+ formatter.format(stDate) +"' AND '"+ formatter.format(enDate)+"'"   ;
+			String sqlQuery ="SELECT NEW com.ibm.aiim.db.model.Tbltemp (c.regno ,c.firstName,c.middleName,c.lastName,c.email,c.dateOfBirth,c.sex,c.totExp,c.dtCheck,c.terms,c.pageNo,c.state,c.phoneMobile,c.tran_id)   FROM Tbltemp AS c  WHERE  c.dtCheck  BETWEEN  '"+ formatter.format(stDate) +"' AND '"+ formatter.format(enDate)+"'"   ;
+			
+			if ("P".equalsIgnoreCase(status)) {
+				System.out.println("Getting Records Pending");
+				sqlQuery ="SELECT NEW com.ibm.aiim.db.model.Tbltemp (c.regno ,c.firstName,c.middleName,c.lastName,c.email,c.dateOfBirth,c.sex,c.totExp,c.dtCheck,c.terms,c.pageNo,c.state,c.phoneMobile,c.tran_id)   FROM Tbltemp AS c  WHERE "   ;
+				
+				sqlQuery = sqlQuery + "c.terms IS NULL";
+				
+			}
+			else if ("A".equalsIgnoreCase(status)) {
+				System.out.println("Getting Records COMPLETED");
+				sqlQuery = sqlQuery + " AND c.terms = '"+ status +"'";
+			}else{
+				sqlQuery ="SELECT NEW com.ibm.aiim.db.model.Tbltemp (c.regno ,c.firstName,c.middleName,c.lastName,c.email,c.dateOfBirth,c.sex,c.totExp,c.dtCheck,c.terms,c.pageNo,c.state,c.phoneMobile,c.tran_id)   FROM Tbltemp AS c"   ;
+				
+			}
+			
+			
+			
 			query = entitymanager.createQuery(sqlQuery);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 			
 		}
-		else if 
-		(emailId!=null){
-			String sqlQuery ="SELECT c FROM Tbltemp c  WHERE  c.email ='" +emailId+"' "  ;
-			query = entitymanager.createQuery(sqlQuery);
-			
-		}else if (startDate!= null && endDate!=null ){
+		else if (startDate!= null && endDate!=null ){
 			SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
 			try{
 			Date stDate = sdf.parse(startDate);
