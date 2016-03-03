@@ -61,6 +61,8 @@ public static String sendMail(PersonalInfo user, String actKey){
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(sender_mail , sender));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmailId()));
+			message.addRecipient(Message.RecipientType.BCC, new InternetAddress(
+		            "admissions@aiim.ac.in"));
 			message.setSubject(subject);
 			message.setContent(body, "text/html");
 			System.out.println(body);

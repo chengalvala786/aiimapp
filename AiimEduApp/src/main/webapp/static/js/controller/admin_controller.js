@@ -76,45 +76,11 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 
 
 	$scope.viewApp = function (row){
-
 		$scope.status =null;
 		$scope.startDt=null;
 		$scope.endDt=null;
 		$scope.emailId =row.entity.personalInfo.emailId;
-		$('#main').block({ 
-			message: '<h1>Processing</h1>', 
-			css: { border: '3px solid #a00' } 
-		}); 
-		
-		$.ajax({
-			url: 'listCompltedApps',
-			dataType: 'text',
-			contentType: false,
-			//async: false, //blocks window close 
-			type: 'GET',
-			data: { status:$scope.status ,  emailId : $scope.emailId  ,starDate: $scope.startDt , endDate:$scope.endDt},
-			success: function(data){
-				//  $('#result').html(data+ " uploaded by FormData!");
-				console.log("Result # "+ JSON.parse(data));
-				
-				$('#main').unblock();
-				var respObj = JSON.parse(data)
-				$rootScope.application =respObj[0];
-				$location.path("/review");
-
-				if (!$scope.$$phase) {
-		            $scope.$apply();
-		        }
-
-			}
-		});
-		
-	
-		//$rootScope.application =row.entity;
-			
-
-
-
+		$location.path("/review").search('showPreview', $scope.emailId);
 	};
 
 
@@ -125,7 +91,7 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 			showGroupPanel: true,
 
 			columnDefs: [
-			             { name:'Reg No.', field: 'personalInfo.regno'  ,  width: 100,  cellTemplate:'<div class="grid-action-cell"><a href="" ng-click="grid.appScope.viewApp(row)">{{COL_FIELD}}</a></div>'},
+			             { name:'Reg No.', field: 'personalInfo.regno'  ,  width: 100,  cellTemplate:'<div  class="grid-action-cell"><a href="#review?showPreview={{row.entity.personalInfo.emailId}}" >{{COL_FIELD}}</a></div>'},
 			             { name:'First Name', field: 'personalInfo.fName' ,  width: 100 },
 			             { name:'Middle Name', field: 'personalInfo.mName',  width: 100 },
 			             { name:'Last Name', field: 'personalInfo.lName',  width: 100  },

@@ -16,6 +16,39 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 		$rootScope.actActivate = true;	
 		$routeParams.as =false;
 	}
+	
+	
+	if ($routeParams.showPreview !=null){
+		$scope.status =null;
+			$scope.startDt=null;
+			$scope.endDt=null;
+			$scope.emailId =$routeParams.showPreview;
+			$('#main').block({ 
+				message: '<h1>Processing</h1>', 
+				css: { border: '3px solid #a00' } 
+			}); 
+			
+			$.ajax({
+				url: 'listCompltedApps',
+				dataType: 'text',
+				contentType: false,
+				//async: false, //blocks window close 
+				type: 'GET',
+				data: { status:$scope.status ,  emailId : $scope.emailId  ,starDate: $scope.startDt , endDate:$scope.endDt},
+				success: function(data){
+					console.log("Result # "+ JSON.parse(data));
+					$('#main').unblock();
+					var respObj = JSON.parse(data)
+					$rootScope.application =respObj[0];
+					$scope.canSubmit =false;
+					
+					if (!$scope.$$phase) {
+			            $scope.$apply();
+			        }
+
+				}
+			});
+		}
 
 
 	$scope.upload = function (file, tranType) {
@@ -360,7 +393,7 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 				
 		}else{
 			$('#main').block({ 
-				message: '<h1>Creating User</h1>', 
+				message: '<h1>Processing...</h1>', 
 				css: { border: '3px solid #a00' } 
 			}); 
 			UserService.reqPswdReset($scope.personalInfo)
