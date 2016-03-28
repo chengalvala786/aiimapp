@@ -96,6 +96,11 @@ div.upload input {
     	width:200px;
     	height:200px;	
     }
+    
+.adminsearch  .blockUI.blockMsg.blockElement  {
+
+	top: 291px!important;
+}  
    
  .cvv{
     width: 10em!important;

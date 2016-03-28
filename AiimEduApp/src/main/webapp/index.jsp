@@ -18,7 +18,7 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 .gridStyle {
 	border: 1px solid rgb(212, 212, 212);
 	width: 100%;
-	height: 1000px;
+
 }
 
 .field-error {
@@ -76,13 +76,13 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 <link href="<c:url value='/static/css/ui-grid.css' />" rel="stylesheet"></link>
 
 
-<link href="<c:url value='/static/css/style.css?id=v22' />" rel="stylesheet"></link>
+<link href="<c:url value='/static/css/style.css?id=v21' />" rel="stylesheet"></link>
 
-<link href="<c:url value='/static/css/app.css?id=v22' />"
+<link href="<c:url value='/static/css/app.css?id=v21' />"
 	rel="stylesheet"></link>
 <link href="<c:url value='/static/css/angular-material.min.css' />"
 	rel="stylesheet"></link>
-<link href="<c:url value='/static/css/print.css?id=v22'  />"
+<link href="<c:url value='/static/css/print.css?id=v21'  />"
 	rel="stylesheet" type="text/css" media="print"></link>
 
 </head>
@@ -133,21 +133,21 @@ form.submitted  input.ng-invalid,form.submitted  select.ng-invalid {
 	<script src="<c:url value='/static/js/angular-animate.js' />"></script>
 	<script src="<c:url value='/static/js/ui-bootstrap-tpls-0.14.3.js' />"></script>
 	<script src="<c:url value='/static/js/angular-animate.js' />"></script>
-	<script src="<c:url value='/static/js/app.js?id=v22' />"></script>
+	<script src="<c:url value='/static/js/app.js?id=v21' />"></script>
 	<script src="<c:url value='/static/js/directive.js' />"></script>
 	<script src="<c:url value='/static/js/jquery.blockUI.js' />"></script>
 	<script src="<c:url value='/static/js/ui-grid.js' />"></script>
 	<script
-		src="<c:url value='/static/js/service/user_service.js?id=v22' />"></script>
+		src="<c:url value='/static/js/service/user_service.js?id=v21' />"></script>
 	<script
-		src="<c:url value='/static/js/service/register_service.js?id=v22' />"></script>
+		src="<c:url value='/static/js/service/register_service.js?id=v21' />"></script>
 	<script
-		src="<c:url value='/static/js/controller/user_controller.js?id=v22' />"></script>
+		src="<c:url value='/static/js/controller/user_controller.js?id=v21' />"></script>
 	<script src="<c:url value='/static/js/ng-file-upload.min.js' />"></script>
 	<script src="<c:url value='/static/js/ng-file-upload-shim.js' />"></script>
 	<script src="<c:url value='/static/js/angular-base64.min.js' />"></script>
 	<script
-		src="<c:url value='/static/js/controller/admin_controller.js?id=v22' />"></script>
+		src="<c:url value='/static/js/controller/admin_controller.js?id=v21' />"></script>
 	<script src="<c:url value='/static/js/ui-bootstrap-tpls-0.14.3.js' />"></script>
 
 	<script src="<c:url value='/static/js/angular-recaptcha.js' />"></script>

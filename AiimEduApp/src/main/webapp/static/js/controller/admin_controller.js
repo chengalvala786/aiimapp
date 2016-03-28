@@ -46,9 +46,9 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 
 
 	$scope.searchApp = function (){
-		$('#main').block({ 
+		$('section').block({ 
 			message: '<h1>Processing</h1>', 
-			css: { border: '3px solid #a00' } 
+			css: { border: '3px solid #a00'  } 
 		}); 
 
 		$.ajax({
@@ -61,7 +61,7 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 			success: function(data){
 				//  $('#result').html(data+ " uploaded by FormData!");
 				console.log("Result # "+ JSON.parse(data));
-				$('#main').unblock();
+				$('section').unblock();
 				$scope.myData=JSON.parse(data);
 
 				if (!$scope.$$phase) {
@@ -104,7 +104,7 @@ App.controller('AppCmplController', ['$scope', 'regService','UserService','$root
 			             { name:'State', field: 'personalInfo.state' ,  width: 100 },
 			             { name:'Mobile', field: 'personalInfo.mobileNumber' ,  width: 100 },
 			             { name:'Page', field: 'pageNo' ,  width: 50 },
-			             { name:'Transaction Id', field: 'tranId' ,  width: 100 },    
+			             { name:'Transaction Id', field: 'tranId' ,  width: 200 },    
 
 			             ],
 
