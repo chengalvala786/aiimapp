@@ -150,16 +150,27 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 
 
 
+		$scope.locationSame = false;
+		$scope.sourceNotSelected =false;
 		var pref1 = $scope.application.additionalInfo.pref1;
 		var pref2 = $scope.application.additionalInfo.pref2;
 		$scope.pref1=false;
 		$scope.pref2=false;	
 		$scope.locationSame =false;
-		if ($scope.additionalInfoForm.$invalid) { 
+		var appErr= false;
+		if ( pref1!='' && pref2 !=''&&  pref1===pref2 ){
+			appErr = true; 
+			$scope.locationSame = true;
+		}
+		
+		if ( ! $rootScope.application.additionalInfo.srcTags.length > 0 ){
+			$scope.sourceNotSelected =true;
+			appErr= true; 
+		}
+		
+		if ($scope.additionalInfoForm.$invalid ||appErr) { 
 			$scope.pref1 = $scope.additionalInfoForm.pref1.$error.required;
 			$scope.pref2 = $scope.additionalInfoForm.pref2.$error.required;
-		}else if ( pref1===pref2){
-			$scope.locationSame = true;
 		}else{
 			$location.path("review");
 		}
@@ -214,22 +225,42 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 				}	
 		);
 	};
+	
+	$scope.isEmpty = function (obj) {
+	    for (var i in obj) if (obj.hasOwnProperty(i)) return false;
+	    return true;
+	};
 	//Click of save button
 	$scope.save = function(page) {
 		$scope.saveOnly(4);
 		if (page==='add'){
-
+			
+			$scope.locationSame = false;
+			$scope.sourceNotSelected =false;
 			var pref1 = $scope.application.additionalInfo.pref1;
 			var pref2 = $scope.application.additionalInfo.pref2;
 			$scope.pref1=false;
 			$scope.pref2=false;	
 			$scope.locationSame =false;
-			if ($scope.additionalInfoForm.$invalid) { 
+			var appErr= false;
+			
+			if ( pref1!='' && pref2 !=''&&  pref1===pref2 ){
+				appErr=true;
+				$scope.locationSame = true;
+			}
+			
+			if ( ! $rootScope.application.additionalInfo.srcTags.length > 0 ){
+				$scope.sourceNotSelected =true;
+				appErr=true;
+			}
+			
+			if ($scope.additionalInfoForm.$invalid || appErr) { 
 				$scope.pref1 = $scope.additionalInfoForm.pref1.$error.required;
 				$scope.pref2 = $scope.additionalInfoForm.pref2.$error.required;
-			}else if ( pref1===pref2){
-				$scope.locationSame = true;
-			}else{
+				
+				
+			}
+			else{
 				console.log("Application"+ appl);
 				$('#main').block({ 
 					message: '<h1>Processing</h1>', 
@@ -303,8 +334,21 @@ App.controller('UserController', ['$scope', 'regService','UserService','$rootSco
 							doe  = doe.substring(0, doe.indexOf("T"));
 							$rootScope.application.eductionalInfo.admissionTest.doe = new Date(doe);
 						}
-
-
+						if ($rootScope.application.acceptedDate === ""){		
+						
+							if ($rootScope.application.additionalInfo != null  && $rootScope.application.additionalInfo.pref1 != null && $rootScope.application.additionalInfo.pref2 != null ){
+								
+								if ($rootScope.application.additionalInfo.pref1 !=  'AIIM-Ahmedabad' &&  $rootScope.application.additionalInfo.pref1 !=  'Skype' ){
+								
+									$rootScope.application.additionalInfo.pref1 =""; 
+								}
+								
+								if ($rootScope.application.additionalInfo.pref2 !=  'AIIM-Ahmedabad' &&  $rootScope.application.additionalInfo.pref2 !=  'Skype' ){
+									
+									$rootScope.application.additionalInfo.pref2 =""; 
+								}
+							}
+						}
 
 						var newRecord = {
 								id:  1,
